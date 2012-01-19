@@ -1,0 +1,24 @@
+LaserHarp is a software and hardware design project by Murray Meehan, Ryan Derry, Kirsten Dohmeier, and Dan Kennedy at the University of Victoria, Canada for our January to April 2012 ELEC499 design project.
+
+Prerequisities for running LaserHarp
+1. Hardware:
+	A Microsoft Kinect RGBD camera, version 1
+	Laser display system (in early development)
+2. Software
+OpenFrameworks (includes ofxOpenCV)
+OpenNI
+OpenCV
+ofxOpenNI
+Marsyas
+ofxMarsyas
+
+To install the software prerequisites on Ubuntu 11.04 (should work on 10.04 as well):
+	cd ~
+	git clone git://github.com/murraymeehan/LaserHarp.git
+	cd LaserHarp
+	./Setup.Platform.sh
+	mkdir -R ~/of/of_preRelease_v007_linux/apps/MyWorkingDir/
+	mv ~/LaserHarp ~/of/of_preRelease_v007_linux/apps/MyWorkingDir/LaserHarp
+
+Good Luck! 
+-- Murray Meehan, January 18 2012
