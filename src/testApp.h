@@ -1,9 +1,14 @@
 #ifndef _TEST_APP
 #define _TEST_APP
-
+#if defined (TARGET_OSX) //|| defined(TARGET_LINUX) // only working on Mac/Linux at the moment (but on Linux you need to run as sudo...)
+    // || defined (TARGET_LINUX) // linux hardware controls via libUSB aren't working in this distro of ofxOpenNI.
+    #define HARDWARE_CONTROLS
+#endif
+//#define USE_XML_NODE_CONFIG // Uncomment this to use an XML config file to select Kinect's OpenNI node. Otherwise it is hardcoded.
 //#define USE_IR // Uncomment this to use infra red instead of RGB cam...
 
 #include "ofxOpenNI.h"
+//#include "ofxMarsyasNetwork.h"
 #include "ofMain.h"
 
 class testApp : public ofBaseApp{
@@ -42,7 +47,7 @@ public:
 	ofxUserGenerator	recordUser, playUser;
 	ofxOpenNIRecorder	oniRecorder;
 
-#if defined (TARGET_OSX) //|| defined(TARGET_LINUX) // only working on Mac/Linux at the moment (but on Linux you need to run as sudo...)
+#ifdef HARDWARE_CONTROLS // only working on Mac at the moment
 	ofxHardwareDriver	hardware;
 #endif
 

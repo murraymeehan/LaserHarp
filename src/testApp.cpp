@@ -25,13 +25,16 @@ void testApp::setup() {
 
 void testApp::setupRecording(string _filename) {
 
-#if defined (TARGET_OSX) //|| defined(TARGET_LINUX) // only working on Mac/Linux at the moment (but on Linux you need to run as sudo...)
+#if defined (HARDWARE_CONTROLS)
 	hardware.setup();				// libusb direct control of motor, LED and accelerometers
 	hardware.setLedOption(LED_OFF); // turn off the led just for yacks (or for live installation/performances ;-)
 #endif
 
+#ifdef USE_XML_NODE_CONFIG
+	recordContext.setupUsingXMLFile();
+#else
 	recordContext.setup();	// all nodes created by code -> NOT using the xml config file at all
-	//recordContext.setupUsingXMLFile();
+#endif
 	recordDepth.setup(&recordContext);
 	recordImage.setup(&recordContext);
 
@@ -78,7 +81,7 @@ void testApp::setupPlayback(string _filename) {
 //--------------------------------------------------------------
 void testApp::update(){
 
-#ifdef TARGET_OSX // only working on Mac at the moment
+#ifdef HARDWARE_CONTROLS // only working on Mac at the moment
 	hardware.update();
 #endif
 
@@ -188,7 +191,7 @@ void testApp::draw(){
 
 	string statusHardware;
 
-#ifdef TARGET_OSX // only working on Mac at the moment
+#ifdef HARDWARE_CONTROLS // only working on Mac at the moment
 	ofPoint statusAccelerometers = hardware.getAccelerometers();
 	stringstream	statusHardwareStream;
 
@@ -218,6 +221,7 @@ void testApp::draw(){
 	<< "    b : cloud user data       : " << statusCloudData << endl
 	<< "- / + : nearThreshold         : " << ofToString(nearThreshold) << endl
 	<< "< / > : farThreshold          : " << ofToString(farThreshold) << endl
+	<< "y / Y : tilt up / down        : " << endl
 	<< endl
 	<< "File  : " << oniRecorder.getCurrentFileName() << endl
 	<< "FPS   : " << ofToString(ofGetFrameRate()) << "  " << statusHardware << endl;
@@ -232,10 +236,10 @@ void testApp:: drawMasks() {
 	glBlendFunc(GL_ONE_MINUS_DST_COLOR, GL_ZERO);
 	allUserMasks.draw(640, 0, 640, 480);
 	glDisable(GL_BLEND);
-    glPopMatrix();
+	glPopMatrix();
 	user1Mask.draw(320, 480, 320, 240);
 	user2Mask.draw(640, 480, 320, 240);
-	
+
 }
 
 void testApp::drawPointCloud(ofxUserGenerator * user_generator, int userID) {
@@ -276,12 +280,24 @@ void testApp::keyPressed(int key){
 	float smooth;
 
 	switch (key) {
-#ifdef TARGET_OSX // only working on Mac at the moment
-		case 357: // up key
+#ifdef HARDWARE_CONTROLS // only working on Mac at the moment
+		case 'y': // up key
 			hardware.setTiltAngle(hardware.tilt_angle++);
 			break;
-		case 359: // down key
+		case 'Y': // down key
 			hardware.setTiltAngle(hardware.tilt_angle--);
+			break;
+#endif
+#ifndef HARDWARE_CONTROLS
+		case 'y': //OF_KEY_UP: // up key
+			ofSetLogLevel( OF_LOG_VERBOSE );
+			ofLog() << "Tilt not working on Linux (or windows) right now."; // TODO: printf doesn't work.
+//			hardware.setTiltAngle(hardware.tilt_angle++);
+			break;
+		case 'Y': //OF_KEY_DOWN: // down key
+            ofSetLogLevel( OF_LOG_VERBOSE );
+			ofLog() << "Tilt not working on Linux (or windows) right now.";
+//			hardware.setTiltAngle(hardware.tilt_angle--);
 			break;
 #endif
 		case 's':
@@ -354,7 +370,7 @@ void testApp::keyPressed(int key){
 			}
 			break;
 		case '[':
-		//case '{':
+		case '{':
 			if (filterFactor - 0.1f > 0.0f) {
 				filterFactor = filterFactor - 0.1f;
 				recordHandTracker.setFilterFactors(filterFactor);
@@ -362,7 +378,7 @@ void testApp::keyPressed(int key){
 			}
 			break;
 		case ']':
-		//case '}':
+		case '}':
 			if (filterFactor + 0.1f <= 1.0f) {
 				filterFactor = filterFactor + 0.1f;
 				recordHandTracker.setFilterFactors(filterFactor);
@@ -410,6 +426,7 @@ void testApp::keyPressed(int key){
 		case 'r':
 			recordContext.toggleRegisterViewport();
 			break;
+        case 'q':
 		default:
 			break;
 	}
