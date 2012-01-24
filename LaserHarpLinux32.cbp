@@ -72,22 +72,25 @@
 			<Add directory="../../../libs/kiss/include/" />
 			<Add directory="/usr/include/gstreamer-0.10/" />
 			<Add directory="/usr/include/glib-2.0" />
+			<Add directory="/usr/local/include/marsyas" />
+			
 		</Compiler>
 		<Linker>
 			<Add library="z" />
 			<Add library="uuid" />
 			<Add library="../../../libs/kiss/lib/linux/libkiss.a" />
 			<Add library="../../../libs/openFrameworksCompiled/lib/linux/libopenFrameworks.a" />
+			<Add library="../../../libs/openFrameworksCompiled/lib/linux/libopenFrameworksDebug.a" />
 			<Add library="../../../libs/poco/lib/linux/libPocoUtil.a" />
 			<Add library="../../../libs/poco/lib/linux/libPocoNet.a" />
 			<Add library="../../../libs/poco/lib/linux/libPocoXML.a" />
 			<Add library="../../../libs/poco/lib/linux/libPocoFoundation.a" />
-			<Add library="../../../libs/openFrameworksCompiled/lib/linux/libopenFrameworksDebug.a" />
 			<Add library="../../../libs/fmodex/lib/linux/libfmodex.so" />
 			<Add library="../../../libs/freetype/lib/linux/libfreetype.a" />
 			<Add library="../../../libs/portaudio/lib/linux/libportaudio.a" />
 			<Add library="../../../libs/rtAudio/lib/linux/libRtAudio.a" />
 			<Add library="../../../libs/tess2/lib/linux/libtess2.a" />
+			<Add library="/usr/local/lib/libmarsyas.so" />
 			<Add library="/usr/lib/libglut.a" />
 			<Add directory="../../../libs/poco/lib/linux" />
 			<Add directory="../../../libs/openFrameworksCompiled/lib/linux" />
@@ -514,6 +517,12 @@
 		</Unit>
 		<Unit filename="../../../addons/ofxOpenNI/src/ofxUserGenerator.h">
 			<Option virtualFolder="addons/ofxOpenNI/src/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxMarsyas/src/ofxMarsyasNetwork.cpp">
+			<Option virtualFolder="addons/ofxMarsyas/src/" />
+		</Unit>
+		<Unit filename="../../../addons/ofxMarsyas/src/ofxMarsyasNetwork.h">
+			<Option virtualFolder="addons/ofxMarsyas/src/" />
 		</Unit>
 		<Unit filename="src/main.cpp">
 			<Option virtualFolder="src" />

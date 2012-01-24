@@ -1,3 +1,8 @@
+/* Changelog:
+20120123:
+1. Find way to retrieve hand position
+
+*/
 #ifndef _TEST_APP
 #define _TEST_APP
 #if defined (TARGET_OSX) //|| defined(TARGET_LINUX) // only working on Mac/Linux at the moment (but on Linux you need to run as sudo...)
@@ -10,6 +15,16 @@
 #include "ofxOpenNI.h"
 //#include "ofxMarsyasNetwork.h"
 #include "ofMain.h"
+
+#include <cstdio>
+#include <string>
+
+#include "MarSystemManager.h"
+#include "SoundFileSource.h"
+#include "SoundFileSink.h"
+#include "Gain.h"
+#include "Series.h"
+#include "CommandLineOptions.h"
 
 class testApp : public ofBaseApp{
 
@@ -61,6 +76,9 @@ public:
 
 	float				filterFactor;
 
+	void                mwmDetectStrum();
+	void                mwmPlayNote();
+    void                sfplay3(string sfName);
 };
 
 #endif

@@ -1,148 +1,111 @@
 # Installer by Murray Meehan 2012-01-12, murray.meehan@gmail.com
-# 
-# References:
-# http://ofxaddons.com/repos/443
-# http://www.openframeworks.cc/setup/linux-codeblocks/
-# http://marsyas.info/docs/manual/marsyas-user/Specific-installation-examples.html#Specific-installation-examples
-# 
 
-echo 
-echo Time to install OpenFrameworks/OpenNI/Everything we need for our project
-echo This script is Ubuntu 11.04 and 10.04 compatable, I think. -- Murray Meehan
 
 echo
-echo installing everything in directory ~/of
-cd ~
-mkdir of
-cd of
+echo Time to install OpenFrameworks/OpenNI/Everything we need for our project (apt-get dependencies)
+echo This script is Ubuntu 11.04 and 10.04 compatable, I think. -- Murray Meehan
 
 echo
 echo Step 0: apt-get installing mandatory prerequisites: git g++ python libusb-1.0-0-dev freeglut3-dev sun-java6-jdk
 sudo add-apt-repository "deb http://archive.canonical.com/ lucid partner"
 sudo apt-get update
-sudo apt-get install git g++ python libusb-1.0-0-dev freeglut3-dev sun-java6-jdk build-essential subversion libasound2-dev cmake cmake-curses-gui libasound2-dev libpoco-dev libglut3 libglut3-dev
+#note: libcurl4-openssl-dev  for Ubuntu 11.04 might be equivalent to libcurl-dev for Ubuntu 10.04.
+sudo apt-get install git g++ python libusb-1.0-0-dev freeglut3-dev sun-java6-jdk build-essential subversion libasound2-dev cmake cmake-curses-gui libasound2-dev libpoco-dev libglut3 libglut3-dev doxygen graphviz mono-complete libboost-all-dev libcairo-dev libcurl4-openssl-dev 
+
 
 echo
-echo Step 0: apt-get installing optional prerequisites: doxygen graphviz mono-complete 
-sudo apt-get install doxygen graphviz mono-complete 
+echo Installing everything in directory ~/499
+mkdir -R ~/499/ && cd ~/499/
 
-echo
-echo Step 1: Download all of the things
-cd ~/of
-#wget http://www.openframeworks.cc/versions/preRelease_v0.07/of_preRelease_v007_linux.tar.gz
-#tar zxvf of_preRelease_v007_linux.tar.gz
-#git clone git://github.com/OpenNI/OpenNI.git
-#wget http://www.openni.org/downloads/nite-bin-linux-x86-v1.5.2.21.tar.bz2
-#tar jxvf nite-bin-linux-x86-v1.5.2.21.tar.bz2
-#git clone git://github.com/avin2/SensorKinect.git
-#git clone https://github.com/gameoverhack/ofxOpenNI.git
-#wget http://sourceforge.net/projects/marsyas/files/marsyas/marsyas-0.4.5.tar.gz/download
-#mv download marsyas-0.4.5.tar.gz
-#tar zxvf marsyas-0.4.5.tar.gz
-#git clone git://github.com/paulreimer/ofxMarsyas.git
+#git clone git://github.com/memo/msalibs.git - MSA libs are OSX compatible only :(
 
-echo
-echo Step 2: Installing all of the things
-echo 2a: OpenFrameworks, Codeblocks, and some dependencies.
-cd ~/of/of_preRelease_v007_linux/scripts/linux/ubuntu
-sudo ./install_codeblocks.sh
-sudo ./install_dependencies.sh 
-sudo ./install_codecs.sh 
 
-echo 
-echo Step 2b: Install openNI latest unstable, 
-cd ~/of/OpenNI/Platform/Linux/CreateRedist
+echo Step 2: Install openNI latest unstable, 
+cd ~/499
+git clone git://github.com/OpenNI/OpenNI.git
+OpenNI/Platform/Linux/CreateRedist
 ./RedistMaker
-cd ~/of/OpenNI/Platform/Linux/Redist/OpenNI-Bin-Dev-Linux-x86-v1.5.2.23
+cd ~/499/OpenNI/Platform/Linux/Redist/OpenNI-Bin-Dev-Linux-x86-v1.5.2.23
+sudo ./install.sh
+
+
+echo Step 2: Install NITE latest unstable, 
+cd ~/499
+wget http://www.openni.org/downloads/nite-bin-linux-x86-v1.5.2.21.tar.bz2 
+tar jxvf nite-bin-linux-x86-v1.5.2.21.tar.bz2
+cd ~/499/NITE-Bin-Dev-Linux-x86-v1.5.2.21
 sudo ./install.sh
 
 echo 
-echo Step 2b: Install NITE latest unstable, 
-cd ~/of/NITE-Bin-Dev-Linux-x86-v1.5.2.21
-sudo ./install.sh
-
-echo 
-echo Step 2b: Install Linux 3d-bit BINARY - avin2 modified SensorKinect drivers 
-cd ~/of/avin2-SensorKinect-faf4994/Bin
+echo Step 2: Install avin2 modified SensorKinect drivers  (Linux 32-bit BINARY)
+cd ~/499
+git clone git://github.com/avin2/SensorKinect.git
+cd ~/499/avin2-SensorKinect-faf4994/Bin
 tar jxvf SensorKinect091-Bin-Linux32-v5.1.0.25.tar.bz2
 cd Sensor-Bin-Linux-x86-v5.1.0.25
 sudo ./install.sh
 
 echo
-echo Step 2c: Install ofxOpenNI
-cd ~/of/of_preRelease_v007_linux/addons/ofxOpenNI 
-cp -R ~/of/of_preRelease_v007_linux/addons/ofxOpenNI/examples/openNI-demoAllFeatures ~/of/of_preRelease_v007_linux/apps/addonsExamples/
+echo Step 2: Install OpenFrameworks w/ Codeblocks, dependencies, examples.
+echo REFERENCE: Codeblocks project template: ~/499/openFrameworks/scripts/linux/template/emptyExample_linux_fullCBP.cbp
+cd ~/499
+#wget http://www.openframeworks.cc/versions/preRelease_v0.07/of_preRelease_v007_linux.tar.gz && tar zxvf of_preRelease_v007_linux.tar.gz
+git clone git://github.com/openframeworks/openFrameworks.git
+cd ~/499/openFrameworks/scripts/linux/ubuntu
+sudo ./install_codeblocks.sh
+sudo ./install_dependencies.sh 
+sudo ./install_codecs.sh 
+cd ~/499/openFrameworks/scripts/linux/
+#echo
+#echo (OPTIONAL) building all examples and addonexamples found in ~/499/openFrameworks/apps/examples/ & addonsExamples/
+#./buildAllExamples.sh 
+#./buildAllAddonExamples.sh
 
 echo
-echo Compile ofxOpenNI app - openNI-demoAllFeatures
-cd ~/of/of_preRelease_v007_linux/apps/addonsExamples/openNI-demoAllFeatures
-#create usable Makefile, addons.make, config.make
+echo Step 2: Install ofxOpenNI w/ examples app @ ~/499/openFrameworks/apps/addonsExamples/openNI-demoAllFeatures
+cd ~/499/openFrameworks/addons/ && git clone https://github.com/gameoverhack/ofxOpenNI.git
+#git clone git://github.com/paulreimer/ofxMarsyas.git
+cp -R ~/499/openFrameworks/addons/ofxOpenNI/examples/* ~/499/openFrameworks/apps/addonsExamples/
+cd ~/of/openFrameworks/apps/addonsExamples/openNI-demoAllFeatures
+#get usable Makefile, addons.make, config.make (the old ones don't work, right?)
 mv makefile makefile.backup
-cp ../opencvExample/Makefile .
-echo ofxOpenNI > ./addons.make
-wget http://web.uvic.ca/~meehanmw/499/config.make
-make
-
-echo
-echo Make some shortcuts in ~/of/shortcuts:
-mkdir -p ~/of/shortcuts
-cd ~/of/shortcuts
-ln -s ~/of/of_preRelease_v007_linux/apps/addonsExamples/openNI-demoAllFeatures/bin openNI-demoAllFeatures-bin
-ln -s ~/of/NITE-Bin-Dev-Linux-x86-v1.5.2.21/Samples/Bin/x86-Release NITE-samples
-ln -s ~/of/marsyas-0.4.5/build/bin marsyas-bin
-ln -s ~/of/of_preRelease_v007_linux/apps of-apps
+wget http://web.uvic.ca/~meehanmw/499/ofxOpenNI/config.make
+cp ../opencvExample/Makefile . #wget http://web.uvic.ca/~meehanmw/499/ofxOpenNI/Makefile
+echo ofxOpenNI > ./addons.make #wget http://web.uvic.ca/~meehanmw/499/ofxOpenNI/addons.make
+make # same effect as: #make Release
 
 
 echo
-echo Step 2d: Install Marsyas and ofxMarsyas
-echo - install marsyas - stable version 0.4.5
-mkdir ~/of/marsyas-0.4.5/build
-cd ~/of/marsyas-0.4.5/build
-echo Press 'c' to configure ccmake, then 'g' to generate build files.
+echo Step 2d: Install Marsyas, ofxMarsyas, ofxMarsyasApps (ofxMarsyas only works on OSX)
+cd ~/499 
+##################3
+# Option 1 - grab everything from Marsyas SVN repository
+svn co https://marsyas.svn.sourceforge.net/svnroot/marsyas/trunk marsyas
+cp ~/499/marsyas/src/marsyas_of/ofxMarsyas/src/* ~/499/openFrameworks/addons/ofxMarsyas/src/
+cp -R ~/499/marsyas/src/apps/ofApps ~/499/openFrameworks/apps/ofxMarsyasApps
+cd ~/499/marsyas/ && mkdir build && cd build
+##################3
+#Option 2 - grab everything from elsewhere
+#wget http://sourceforge.net/projects/marsyas/files/marsyas/marsyas-0.4.5.tar.gz/download && mv download marsyas.tar.gz && tar zxvf marsyas.tar.gz
+#cd ~/499/openFrameworks/apps/ && git clone git://github.com/paulreimer/ofxMarsyasApps.git # ofxMarsyas and ofxMarsyasApps are MacOSX/iPhone only b/c of MSAlib/Cinder prereq.
+#cd ~/499/marsyas-0.4.5/ && mkdir build && cd build
+##################3
+echo Press 'c', then 'g': 'c' to configure ccmake, 'g' to generate build files
 ccmake ../src/ 
-make
-make test
-sudo make install
+make && make test && sudo make install
 
-# echo
-# echo NOT WORKING - build marsyas examples, to help new programmers learn how to write for marsyas
-# mkdir ~/of/marsyas-0.4.5/build/examples
-# cd ~/of/marsyas-0.4.5/doc/examples
-
-
-# echo
-# echo NOT RUNNING THIS - install marsyas unstable SVN branch - recommended if developing parts of marsyas
-#cd ~/of
-#svn co https://marsyas.svn.sourceforge.net/svnroot/marsyas/trunk marsyas-svn
-#cd marsyas-svn
-
-# echo
-# echo install ofxMarsyas
-# mv ~/of/ofxMarsyas ~/of/of_preRelease_v007_linux/addons/ofxMarsyas
-#
-# echo
-# echo NOT WORKING - missing ofxMarsyas samples - got some from paul via gabby
-# echo WARNING: these require MSAlibs to work
-# echo https://github.com/memo/msalibs
-# echo https://github.com/memo/msalibs/tree/master/ofxMSAInteractiveObject
-# cd ~/of/of_preRelease_v007_linux/apps/addonsExamples/
-# mkdir marsyas
-# cd marsyas
-# wget https://www.dropbox.com/s/lzs0is96yynenjf/marNetwork.cpp
-# wget https://www.dropbox.com/s/07dqur3vqaez7c9/marNetwork.h
-# echo ofxMarsyas > addons.make
-# cp ../openNI-demoAllFeatures/Makefile .
-# make
-
-
-echo
-echo Step 4: Compiling examples and addonExamples
-echo Note: ofxOpenNI example should have failed to compile using ./buildAllAddonExamples.sh
-cd ~/of/of_preRelease_v007_linux/scripts/linux
-./buildAllExamples.sh
-./buildAllAddonExamples.sh
 
 echo
 echo Step 5: All done! 
+echo Make some shortcuts in ~/of/shortcuts:
+mkdir -p ~/of/shortcuts
+cd ~/of/shortcuts
+ln -s ~/499/openFrameworks/apps/addonsExamples/openNI-demoAllFeatures/bin openNI-demoAllFeatures-bin
+ln -s ~/499/NITE-Bin-Dev-Linux-x86-v1.5.2.21/Samples/Bin/x86-Release NITE-samples
+ln -s ~/499/marsyas-0.4.5/build/bin marsyas-bin
+ln -s ~/499/of_preRelease_v007_linux/apps of-apps
 echo Go to ~/of/shortcuts to find some example programs
 cd ~/of/shortcuts
+ls
+
+

@@ -1,5 +1,7 @@
 #include "testApp.h"
 
+using namespace std;
+using namespace Marsyas;
 //--------------------------------------------------------------
 void testApp::setup() {
 
@@ -130,6 +132,97 @@ void testApp::update(){
 	}
 }
 
+
+// take advantage of Composite (Marsyas tutorial example to play a file)
+//--------------------------------------------------------------
+void testApp::sfplay3(string sfName)
+{
+    cout << "sfplay3: Playing " << sfName << endl;
+
+    // get rid of some stuff taking advantage of
+    // composite
+
+    // Create a series Composite
+    MarSystem* series = new Series("series");
+
+    // create a soundfilesource for reading samples
+    // from the file
+    MarSystem* src = new SoundFileSource("src");
+    src->updctrl("mrs_string/filename", sfName);
+
+    // simple MarSystem a gain control
+    MarSystem* gain = new Gain("gain");
+    gain->updctrl("mrs_real/gain", 2.0);
+
+    // SoundFileSink writes to a file
+    MarSystem* dest = new SoundFileSink("dest");
+    dest->updctrl("mrs_string/filename", "ajay.au");
+
+    // add MarSystems to series Composite
+    series->addMarSystem(src);
+    series->addMarSystem(gain);
+    series->addMarSystem(dest);
+
+    // we only need to change window size at the composite level
+    series->updctrl("mrs_natural/inSamples", 4096);
+
+    cout << (*series) << endl;
+
+    // tick method basically calls process
+    // with an empty input buffer and an empty output buffer
+    // because soundfilesource/sink read/write to files
+    // as sideeffects this works
+
+
+    series->updctrl("Gain/gain/mrs_real/gain", 0.0);
+    for (int i=0; i<20; i++)
+    {
+        series->tick();
+        series->updctrl("Gain/gain/mrs_real/gain",
+						series->getctrl("Gain/gain/mrs_real/gain")->to<mrs_real>() + 0.1);
+    }
+
+    // Composite deletes the added MarSystems
+    // so you must not delete them
+    delete series;
+}
+
+
+//--------------------------------------------------------------
+void testApp::mwmPlayNote(){
+    // import marsyas and play some kind of noise...
+//    string file="data/maid.wav"; // maid.wav is a fairly long song...
+    string file="data/maidclip1.wav";
+    sfplay3(file);
+}
+
+//--------------------------------------------------------------
+void testApp::mwmDetectStrum(){
+    float x_target=-207;
+    float y_target=-180;
+    float z_target=2257;
+    float radius=100;
+
+    if (recordHandTracker.getNumTrackedHands() > 0) {
+        ofxTrackedHand MurrayHand = *recordHandTracker.getHand(0);// if there are 1 or more hands detected, this will print the result!
+        float x = MurrayHand.rawPos.X;
+        float y = MurrayHand.rawPos.Y;
+        float z = MurrayHand.rawPos.Z;
+        printf("[ %d , %d , %d ],",x,y,z);
+        // recorded target location of desk lamp: xyz= -207   -180   2257
+
+        float dist=sqrtf((x-x_target)*(x-x_target)+(y-y_target)*(y-y_target)+(z-z_target)*(z-z_target));
+        if (dist < radius) {
+            mwmPlayNote();
+            printf(" DING DING DING %d %d %d , dist = %d ",x,y,z,dist);
+        }
+        printf("\n");
+
+
+    }
+
+}
+
 //--------------------------------------------------------------
 void testApp::draw(){
 
@@ -154,6 +247,29 @@ void testApp::draw(){
 		}
 		if (isTrackingHands)
 			recordHandTracker.drawHands();
+			/////// Murray /////////////
+			mwmDetectStrum();
+			/////// Murray /////////////
+//			if (recordHandTracker.getNumTrackedHands() > 0) {
+//                ofxTrackedHand MurrayHand = *recordHandTracker.getHand(0);// if there are 1 or more hands detected, this will print the result!
+//                int x = MurrayHand.rawPos.X;
+//                int y = MurrayHand.rawPos.Y;
+//                int z = MurrayHand.rawPos.Z;
+//                printf("[ %i , %i , %i ],",x,y,z);
+//                // recorded target location of desk lamp: xyz= -207   -180   2257
+//                int x_target=-207;
+//                int y_target=-180;
+//                int z_target=2257;
+//                int radius=100;
+//                int dist=sqrt((x-x_target)^2+(y-y_target)^2+(z-z_target)^2);
+//                if (dist < radius) {
+//                printf(" DING DING DING %i %i %i , dist = %i ",x,y,z,dist);
+//                }
+//
+//                printf("\n");
+//
+//			}
+			///////////// Murray /////////////
 
 	} else {
 

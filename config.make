@@ -54,6 +54,6 @@ USER_LIBS = -lOpenNI -lmarsyas
 
 # change this to add different compiler optimizations to your project
 
-USER_COMPILER_OPTIMIZATION = -march=native -mtune=native -Os
+USER_COMPILER_OPTIMIZATION = -march=native -mtune=native -Os 
 
 EXCLUDE_FROM_SOURCE="bin,.xcodeproj,obj,.git"
