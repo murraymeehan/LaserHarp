@@ -1,31 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Release" />
-	<File name="../../../addons/ofxMarsyas/src/ofxMarsyasNetwork.h" open="0" top="0" tabpos="3">
-		<Cursor position="198" topLine="0" />
+	<File name="../../../addons/ofxMarsyas/src/ofxMarsyasNetwork.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="317" topLine="0" />
 	</File>
-	<File name="../../../addons/ofxOpenNI/src/ofxHandGenerator.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="2162" topLine="59" />
+	<File name="../../../addons/ofxMarsyas/src/ofxMarsyasNetwork.h" open="1" top="0" tabpos="4">
+		<Cursor position="248" topLine="0" />
+	</File>
+	<File name="../../../addons/ofxOpenNI/include/openni/XnCppWrapper.h" open="1" top="0" tabpos="6">
+		<Cursor position="180628" topLine="5317" />
+	</File>
+	<File name="../../../addons/ofxOpenNI/include/openni/XnTypes.h" open="0" top="0" tabpos="0">
+		<Cursor position="12936" topLine="430" />
+	</File>
+	<File name="../../../addons/ofxOpenNI/src/ofxGestureGenerator.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="5610" topLine="127" />
+	</File>
+	<File name="../../../addons/ofxOpenNI/src/ofxHandGenerator.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="8457" topLine="266" />
 	</File>
 	<File name="../../../addons/ofxOpenNI/src/ofxHandGenerator.h" open="0" top="0" tabpos="0">
-		<Cursor position="1423" topLine="25" />
+		<Cursor position="1806" topLine="39" />
 	</File>
 	<File name="../../../addons/ofxOpenNI/src/ofxIRGenerator.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1539" topLine="32" />
 	</File>
 	<File name="../../../addons/ofxOpenNI/src/ofxOpenNIContext.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1684" topLine="29" />
+		<Cursor position="3163" topLine="77" />
 	</File>
 	<File name="../../../addons/ofxOpenNI/src/ofxOpenNIContext.h" open="0" top="0" tabpos="0">
 		<Cursor position="1588" topLine="34" />
 	</File>
-	<File name="../../../addons/ofxOpenNI/src/ofxTrackedHand.h" open="0" top="0" tabpos="0">
-		<Cursor position="1922" topLine="38" />
+	<File name="../../../addons/ofxOpenNI/src/ofxTrackedHand.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1555" topLine="28" />
 	</File>
-	<File name="src/testApp.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="828" topLine="33" />
+	<File name="../../../addons/ofxOpenNI/src/ofxTrackedHand.h" open="0" top="0" tabpos="4">
+		<Cursor position="2009" topLine="43" />
 	</File>
-	<File name="src/testApp.h" open="1" top="1" tabpos="0">
-		<Cursor position="1169" topLine="25" />
+	<File name="src/main.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="70" topLine="0" />
+	</File>
+	<File name="src/testApp.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="7341" topLine="199" />
+	</File>
+	<File name="src/testApp.h" open="1" top="0" tabpos="1">
+		<Cursor position="884" topLine="15" />
 	</File>
 </CodeBlocks_layout_file>

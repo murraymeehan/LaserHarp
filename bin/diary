@@ -1,0 +1,958 @@
+octave:7> log
+log =
+
+    498.235    218.016    705.899   5443.000
+    435.399    240.398    675.291   5483.000
+    416.263    240.004    670.072   5522.000
+    394.315    241.046    669.566   5563.000
+    352.725    247.199    694.578   5603.000
+    332.059    246.256    705.679   5642.000
+    312.189    245.058    723.776   5682.000
+    294.419    245.835    747.446   5722.000
+    280.823    246.578    771.441   5763.000
+    269.799    254.593    825.088   5803.000
+    265.205    252.086    845.682   5842.000
+    263.909    250.213    866.720   5882.000
+    264.126    245.369    886.386   5920.000
+    266.031    240.660    904.542   5959.000
+    270.748    236.489    923.504   6001.000
+    286.584    231.785    959.424   6039.000
+    295.351    228.691    975.847   6078.000
+    304.155    225.846    990.585   6120.000
+    313.183    224.344   1002.670   6162.000
+    332.644    226.803   1020.510   6202.000
+    342.370    226.962   1026.230   6242.000
+    351.599    226.160   1030.960   6281.000
+    360.242    227.692   1031.040   6321.000
+    369.385    226.545   1030.850   6359.000
+    380.538    226.660   1027.270   6400.000
+    401.811    230.488   1017.620   6440.000
+    413.249    230.496   1010.660   6478.000
+    421.572    230.920   1003.580   6515.000
+    432.096    228.531    999.163   6553.000
+    441.853    227.021    992.943   6594.000
+    458.878    229.194    975.640   6632.000
+    467.169    226.548    964.353   6669.000
+    475.453    221.423    951.779   6708.000
+    482.924    217.789    936.218   6747.000
+    488.469    213.946    916.942   6789.000
+    494.307    209.072    896.129   6828.000
+    502.517    203.357    848.361   6868.000
+    505.286    197.948    822.429   6907.000
+    506.955    194.033    796.854   6947.000
+    506.036    190.433    770.473   6987.000
+    502.594    189.117    745.496   7028.000
+    483.175    194.612    711.271   7066.000
+    470.984    192.771    699.457   7105.000
+    457.191    192.010    693.797   7143.000
+    442.281    189.864    692.794   7183.000
+    425.550    186.925    694.135   7224.000
+    408.329    183.551    699.342   7263.000
+    368.900    179.018    719.994   7308.000
+    349.369    173.250    732.844   7346.000
+    332.094    170.841    749.639   7388.000
+    318.126    169.626    770.287   7427.000
+    304.611    167.071    791.156   7471.000
+    288.155    170.879    834.083   7515.000
+    283.168    170.769    854.506   7554.000
+    280.305    169.752    874.423   7594.000
+    279.795    166.467    893.717   7637.000
+    282.501    158.149    930.231   7681.000
+    285.705    152.535    946.648   7719.000
+    291.624    147.071    962.878   7756.000
+    298.609    143.584    976.395   7800.000
+    315.752    139.510    999.372   7839.000
+    324.696    136.403   1010.490   7877.000
+    333.702    133.753   1019.530   7915.000
+    342.538    130.810   1026.030   7955.000
+    351.762    128.520   1028.440   8006.000
+    372.365    123.238   1025.810   8052.000
+    382.384    119.066   1021.410   8100.000
+    402.027    112.013   1009.570   8146.000
+    411.055    107.331   1003.260   8186.000
+    420.630    102.024    996.861   8227.000
+    429.973     99.522    986.708   8265.000
+    449.330     96.804    963.508   8305.000
+    458.227     93.065    951.398   8345.000
+    467.726     89.408    938.712   8382.000
+    478.598     85.910    922.812   8422.000
+    489.361     83.167    906.059   8462.000
+    510.365     74.589    869.459   8502.000
+    520.888     66.154    849.610   8541.000
+    530.569     58.992    828.678   8580.000
+    534.726     57.206    806.951   8620.000
+    537.660     54.256    786.568   8659.000
+    536.810     51.770    766.086   8697.000
+    527.247     49.423    735.427   8740.000
+    517.779     45.516    718.665   8804.000
+    497.162     46.382    703.182   8853.000
+    484.331     42.993    696.104   8911.000
+    448.944     45.372    695.219   8958.000
+    429.412     43.349    695.588   9004.000
+    385.769     47.994    710.235   9055.000
+    364.688     45.638    717.914   9107.000
+
+octave:8> 
+
+octave:2> log
+octave:3> recording 
+recording =
+
+    498.235    218.016    705.899   5443.000
+    435.399    240.398    675.291   5483.000
+    416.263    240.004    670.072   5522.000
+    394.315    241.046    669.566   5563.000
+    352.725    247.199    694.578   5603.000
+    332.059    246.256    705.679   5642.000
+    312.189    245.058    723.776   5682.000
+    294.419    245.835    747.446   5722.000
+    280.823    246.578    771.441   5763.000
+    269.799    254.593    825.088   5803.000
+    265.205    252.086    845.682   5842.000
+    263.909    250.213    866.720   5882.000
+    264.126    245.369    886.386   5920.000
+    266.031    240.660    904.542   5959.000
+    270.748    236.489    923.504   6001.000
+    286.584    231.785    959.424   6039.000
+    295.351    228.691    975.847   6078.000
+    304.155    225.846    990.585   6120.000
+    313.183    224.344   1002.670   6162.000
+    332.644    226.803   1020.510   6202.000
+    342.370    226.962   1026.230   6242.000
+    351.599    226.160   1030.960   6281.000
+    360.242    227.692   1031.040   6321.000
+    369.385    226.545   1030.850   6359.000
+    380.538    226.660   1027.270   6400.000
+    401.811    230.488   1017.620   6440.000
+    413.249    230.496   1010.660   6478.000
+    421.572    230.920   1003.580   6515.000
+    432.096    228.531    999.163   6553.000
+    441.853    227.021    992.943   6594.000
+    458.878    229.194    975.640   6632.000
+    467.169    226.548    964.353   6669.000
+    475.453    221.423    951.779   6708.000
+    482.924    217.789    936.218   6747.000
+    488.469    213.946    916.942   6789.000
+    494.307    209.072    896.129   6828.000
+    502.517    203.357    848.361   6868.000
+    505.286    197.948    822.429   6907.000
+    506.955    194.033    796.854   6947.000
+    506.036    190.433    770.473   6987.000
+    502.594    189.117    745.496   7028.000
+    483.175    194.612    711.271   7066.000
+    470.984    192.771    699.457   7105.000
+    457.191    192.010    693.797   7143.000
+    442.281    189.864    692.794   7183.000
+    425.550    186.925    694.135   7224.000
+    408.329    183.551    699.342   7263.000
+    368.900    179.018    719.994   7308.000
+    349.369    173.250    732.844   7346.000
+    332.094    170.841    749.639   7388.000
+    318.126    169.626    770.287   7427.000
+    304.611    167.071    791.156   7471.000
+    288.155    170.879    834.083   7515.000
+    283.168    170.769    854.506   7554.000
+    280.305    169.752    874.423   7594.000
+    279.795    166.467    893.717   7637.000
+    282.501    158.149    930.231   7681.000
+    285.705    152.535    946.648   7719.000
+    291.624    147.071    962.878   7756.000
+    298.609    143.584    976.395   7800.000
+    315.752    139.510    999.372   7839.000
+    324.696    136.403   1010.490   7877.000
+    333.702    133.753   1019.530   7915.000
+    342.538    130.810   1026.030   7955.000
+    351.762    128.520   1028.440   8006.000
+    372.365    123.238   1025.810   8052.000
+    382.384    119.066   1021.410   8100.000
+    402.027    112.013   1009.570   8146.000
+    411.055    107.331   1003.260   8186.000
+    420.630    102.024    996.861   8227.000
+    429.973     99.522    986.708   8265.000
+    449.330     96.804    963.508   8305.000
+    458.227     93.065    951.398   8345.000
+    467.726     89.408    938.712   8382.000
+    478.598     85.910    922.812   8422.000
+    489.361     83.167    906.059   8462.000
+    510.365     74.589    869.459   8502.000
+    520.888     66.154    849.610   8541.000
+    530.569     58.992    828.678   8580.000
+    534.726     57.206    806.951   8620.000
+    537.660     54.256    786.568   8659.000
+    536.810     51.770    766.086   8697.000
+    527.247     49.423    735.427   8740.000
+    517.779     45.516    718.665   8804.000
+    497.162     46.382    703.182   8853.000
+    484.331     42.993    696.104   8911.000
+    448.944     45.372    695.219   8958.000
+    429.412     43.349    695.588   9004.000
+    385.769     47.994    710.235   9055.000
+    364.688     45.638    717.914   9107.000
+
+octave:4> recording (:,1)
+ans =
+
+   498.24
+   435.40
+   416.26
+   394.31
+   352.73
+   332.06
+   312.19
+   294.42
+   280.82
+   269.80
+   265.20
+   263.91
+   264.13
+   266.03
+   270.75
+   286.58
+   295.35
+   304.15
+   313.18
+   332.64
+   342.37
+   351.60
+   360.24
+   369.38
+   380.54
+   401.81
+   413.25
+   421.57
+   432.10
+   441.85
+   458.88
+   467.17
+   475.45
+   482.92
+   488.47
+   494.31
+   502.52
+   505.29
+   506.95
+   506.04
+   502.59
+   483.18
+   470.98
+   457.19
+   442.28
+   425.55
+   408.33
+   368.90
+   349.37
+   332.09
+   318.13
+   304.61
+   288.15
+   283.17
+   280.31
+   279.80
+   282.50
+   285.70
+   291.62
+   298.61
+   315.75
+   324.70
+   333.70
+   342.54
+   351.76
+   372.37
+   382.38
+   402.03
+   411.06
+   420.63
+   429.97
+   449.33
+   458.23
+   467.73
+   478.60
+   489.36
+   510.37
+   520.89
+   530.57
+   534.73
+   537.66
+   536.81
+   527.25
+   517.78
+   497.16
+   484.33
+   448.94
+   429.41
+   385.77
+   364.69
+
+octave:5> x=recording (:,1);
+octave:6> y=recording (:,2);
+octave:7> z=recording (:,3);
+octave:8> t=recording (:,4);
+octave:9> recording (:,4);
+octave:10> t
+t =
+
+   5443
+   5483
+   5522
+   5563
+   5603
+   5642
+   5682
+   5722
+   5763
+   5803
+   5842
+   5882
+   5920
+   5959
+   6001
+   6039
+   6078
+   6120
+   6162
+   6202
+   6242
+   6281
+   6321
+   6359
+   6400
+   6440
+   6478
+   6515
+   6553
+   6594
+   6632
+   6669
+   6708
+   6747
+   6789
+   6828
+   6868
+   6907
+   6947
+   6987
+   7028
+   7066
+   7105
+   7143
+   7183
+   7224
+   7263
+   7308
+   7346
+   7388
+   7427
+   7471
+   7515
+   7554
+   7594
+   7637
+   7681
+   7719
+   7756
+   7800
+   7839
+   7877
+   7915
+   7955
+   8006
+   8052
+   8100
+   8146
+   8186
+   8227
+   8265
+   8305
+   8345
+   8382
+   8422
+   8462
+   8502
+   8541
+   8580
+   8620
+   8659
+   8697
+   8740
+   8804
+   8853
+   8911
+   8958
+   9004
+   9055
+   9107
+
+octave:11> plot3(x,y,z)
+octave:12> plot3(x,y,z,t)
+octave:13> help plot3
+`plot3' is a function from the file /usr/share/octave/3.2.4/m/plot/plot3.m
+
+ -- Function File:  plot3 (ARGS)
+     Produce three-dimensional plots.  Many different combinations of
+     arguments are possible.  The simplest form is
+
+          plot3 (X, Y, Z)
+
+     in which the arguments are taken to be the vertices of the points
+     to be plotted in three dimensions.  If all arguments are vectors
+     of the same length, then a single continuous line is drawn.  If
+     all arguments are matrices, then each column of the matrices is
+     treated as a separate line.  No attempt is made to transpose the
+     arguments to make the number of rows match.
+
+     If only two arguments are given, as
+
+          plot3 (X, C)
+
+     the real and imaginary parts of the second argument are used as
+     the Y and Z coordinates, respectively.
+
+     If only one argument is given, as
+
+          plot3 (C)
+
+     the real and imaginary parts of the argument are used as the Y and
+     Z values, and they are plotted versus their index.
+
+     Arguments may also be given in groups of three as
+
+          plot3 (X1, Y1, Z1, X2, Y2, Z2, ...)
+
+     in which each set of three arguments is treated as a separate line
+     or set of lines in three dimensions.
+
+     To plot multiple one- or two-argument groups, separate each group
+     with an empty format string, as
+
+          plot3 (X1, C1, "", C2, "", ...)
+
+     An example of the use of `plot3' is
+
+             z = [0:0.05:5];
+             plot3 (cos(2*pi*z), sin(2*pi*z), z, ";helix;");
+             plot3 (z, exp(2i*pi*z), ";complex sinusoid;");
+
+     See also: plot, xlabel, ylabel, zlabel, title, print
+
+
+
+Additional help for built-in functions and operators is
+available in the on-line version of the manual.  Use the command
+`doc <topic>' to search the manual index.
+
+Help and information about Octave is also available on the WWW
+at http://www.octave.org and via the help@octave.org
+mailing list.
+octave:14> info plot3
+
+  Additional information about GNU Octave is available at
+  http://www.octave.org
+
+  Descriptions of mailing lists devoted to Octave are available at
+  http://www.octave.org/archive.html
+
+  You may also find some information in the Octave Wiki at
+  http://wiki.octave.org
+
+  Additional functionality can be enabled by using packages from
+  the Octave Forge project, which may be found at
+  http://octave.sourceforge.net
+
+  Report bugs to <bug@octave.org> (but first, please read
+  http://www.octave.org/bugs.html to learn how to write a helpful report)
+
+octave:15> help plot3
+`plot3' is a function from the file /usr/share/octave/3.2.4/m/plot/plot3.m
+
+ -- Function File:  plot3 (ARGS)
+     Produce three-dimensional plots.  Many different combinations of
+     arguments are possible.  The simplest form is
+
+          plot3 (X, Y, Z)
+
+     in which the arguments are taken to be the vertices of the points
+     to be plotted in three dimensions.  If all arguments are vectors
+     of the same length, then a single continuous line is drawn.  If
+     all arguments are matrices, then each column of the matrices is
+     treated as a separate line.  No attempt is made to transpose the
+     arguments to make the number of rows match.
+
+     If only two arguments are given, as
+
+          plot3 (X, C)
+
+     the real and imaginary parts of the second argument are used as
+     the Y and Z coordinates, respectively.
+
+     If only one argument is given, as
+
+          plot3 (C)
+
+     the real and imaginary parts of the argument are used as the Y and
+     Z values, and they are plotted versus their index.
+
+     Arguments may also be given in groups of three as
+
+          plot3 (X1, Y1, Z1, X2, Y2, Z2, ...)
+
+     in which each set of three arguments is treated as a separate line
+     or set of lines in three dimensions.
+
+     To plot multiple one- or two-argument groups, separate each group
+     with an empty format string, as
+
+          plot3 (X1, C1, "", C2, "", ...)
+
+     An example of the use of `plot3' is
+
+             z = [0:0.05:5];
+             plot3 (cos(2*pi*z), sin(2*pi*z), z, ";helix;");
+             plot3 (z, exp(2i*pi*z), ";complex sinusoid;");
+
+     See also: plot, xlabel, ylabel, zlabel, title, print
+
+
+
+Additional help for built-in functions and operators is
+available in the on-line version of the manual.  Use the command
+`doc <topic>' to search the manual index.
+
+Help and information about Octave is also available on the WWW
+at http://www.octave.org and via the help@octave.org
+mailing list.
+octave:16> doc plot3
+octave:17> help plot3
+`plot3' is a function from the file /usr/share/octave/3.2.4/m/plot/plot3.m
+
+ -- Function File:  plot3 (ARGS)
+     Produce three-dimensional plots.  Many different combinations of
+     arguments are possible.  The simplest form is
+
+          plot3 (X, Y, Z)
+
+     in which the arguments are taken to be the vertices of the points
+     to be plotted in three dimensions.  If all arguments are vectors
+     of the same length, then a single continuous line is drawn.  If
+     all arguments are matrices, then each column of the matrices is
+     treated as a separate line.  No attempt is made to transpose the
+     arguments to make the number of rows match.
+
+     If only two arguments are given, as
+
+          plot3 (X, C)
+
+     the real and imaginary parts of the second argument are used as
+     the Y and Z coordinates, respectively.
+
+     If only one argument is given, as
+
+          plot3 (C)
+
+     the real and imaginary parts of the argument are used as the Y and
+     Z values, and they are plotted versus their index.
+
+     Arguments may also be given in groups of three as
+
+          plot3 (X1, Y1, Z1, X2, Y2, Z2, ...)
+
+     in which each set of three arguments is treated as a separate line
+     or set of lines in three dimensions.
+
+     To plot multiple one- or two-argument groups, separate each group
+     with an empty format string, as
+
+          plot3 (X1, C1, "", C2, "", ...)
+
+     An example of the use of `plot3' is
+
+             z = [0:0.05:5];
+             plot3 (cos(2*pi*z), sin(2*pi*z), z, ";helix;");
+             plot3 (z, exp(2i*pi*z), ";complex sinusoid;");
+
+     See also: plot, xlabel, ylabel, zlabel, title, print
+
+
+
+Additional help for built-in functions and operators is
+available in the on-line version of the manual.  Use the command
+`doc <topic>' to search the manual index.
+
+Help and information about Octave is also available on the WWW
+at http://www.octave.org and via the help@octave.org
+mailing list.
+octave:18> plot3(x,y,z)
+octave:19> plot3(x,y,z)
+octave:20> help print
+`print' is a function from the file /usr/share/octave/3.2.4/m/plot/print.m
+
+ -- Function File:  print ()
+ -- Function File:  print (OPTIONS)
+ -- Function File:  print (FILENAME, OPTIONS)
+ -- Function File:  print (H, FILENAME, OPTIONS)
+     Print a graph, or save it to a file
+
+     FILENAME defines the file name of the output file.  If no filename
+     is specified, the output is sent to the printer.
+
+     H specifies the figure handle.  If no handle is specified the
+     handle for the current figure is used.
+
+     OPTIONS:
+    `-PPRINTER'
+          Set the PRINTER name to which the graph is sent if no
+          FILENAME is specified.
+
+    `-GGHOSTSCRIPT_COMMAND'
+          Specify the command for calling Ghostscript.  For Unix and
+          Windows, the defaults are 'gs' and 'gswin32c', respectively.
+
+    `-color'
+    `-mono'
+          Monochrome or color lines.
+
+    `-solid'
+    `-dashed'
+          Solid or dashed lines.
+
+    `-portrait'
+    `-landscape'
+          Specify the orientation of the plot for printed output.
+
+    `-dDEVICE'
+          Output device, where DEVICE is one of:
+         `ps'
+         `ps2'
+         `psc'
+         `psc2'
+               Postscript (level 1 and 2, mono and color)
+
+         `eps'
+         `eps2'
+         `epsc'
+         `epsc2'
+               Encapsulated postscript (level 1 and 2, mono and color)
+
+         `tex'
+         `epslatex'
+         `epslatexstandalone'
+         `pstex'
+         `pslatex'
+               Generate a LaTeX (or TeX) file for labels, and eps/ps for
+               graphics.  The file produced by `epslatexstandalone' can
+               be processed directly by LaTeX.  The other formats are
+               intended to be included in a LaTeX (or TeX) document.
+               The `tex' device is the same as the `epslatex' device.
+
+         `ill'
+         `aifm'
+               Adobe Illustrator
+
+         `cdr'
+         `corel'
+               CorelDraw
+
+         `dxf'
+               AutoCAD
+
+         `emf'
+         `meta'
+               Microsoft Enhanced Metafile
+
+         `fig'
+               XFig.  If this format is selected the additional options
+                  `-textspecial' or `-textnormal' can be used to control
+                  whether the special flag should be set for the text in
+                  the figure (default is `-textnormal').
+
+         `hpgl'
+               HP plotter language
+
+         `mf'
+               Metafont
+
+         `png'
+               Portable network graphics
+
+         `jpg'
+         `jpeg'
+               JPEG image
+
+         `gif'
+               GIF image
+
+         `pbm'
+               PBMplus
+
+         `svg'
+               Scalable vector graphics
+
+         `pdf'
+               Portable document format
+
+               NOTE: The gnuplot binary as shipped by Debian cannot
+               create PDF files, see http://bugs.debian.org/478677
+
+
+          If the device is omitted, it is inferred from the file
+          extension, or if there is no filename it is sent to the
+          printer as postscript.
+
+    `-dGS_DEVICE'
+          Additional devices are supported by Ghostscript.  Some
+          examples are;
+
+         `ljet2p'
+               HP LaserJet IIP
+
+         `ljet3'
+               HP LaserJet III
+
+         `deskjet'
+               HP DeskJet and DeskJet Plus
+
+         `cdj550'
+               HP DeskJet 550C
+
+         `paintjet'
+               HP PointJet
+
+         `pcx24b'
+               24-bit color PCX file format
+
+         `ppm'
+               Portable Pixel Map file format
+
+          For a complete list, type `system ("gs -h")' to see what
+          formats and devices are available.
+
+          When the ghostscript is sent to a printer the size is
+          determined by the figure's "papersize" property.  When the
+          ghostscript output is sent to a file the size is determined
+          by the figure's "paperposition" property.
+
+    `-rNUM'
+          Resolution of bitmaps in pixels per inch.  For both metafiles
+          and SVG the default is the screen resolution, for other it is
+          150 dpi.  To specify screen resolution, use "-r0".
+
+    `-tight'
+          Forces a tight bounding box for eps-files.  Since the
+          ghostscript devices are conversion of an eps-file, this
+          option works the those devices as well.
+
+    `-SXSIZE,YSIZE'
+          Plot size in pixels for EMF, GIF, JPEG, PBM, PNG and SVG.  If
+          using the command form of the print function, you must quote
+          the XSIZE,YSIZE option.  For example, by writing
+          `"-S640,480"'.  The size defaults to that specified by the
+          figure's paperposition property.
+
+    `-FFONTNAME'
+    `-FFONTNAME:SIZE'
+    `-F:SIZE'
+          FONTNAME set the postscript font (for use with postscript,
+          aifm, corel and fig).  By default, 'Helvetica' is set for
+          PS/Aifm, and 'SwitzerlandLight' for Corel.  It can also be
+          'Times-Roman'.  SIZE is given in points.  FONTNAME is ignored
+          for the fig device.
+
+     The filename and options can be given in any order.
+
+
+Additional help for built-in functions and operators is
+available in the on-line version of the manual.  Use the command
+`doc <topic>' to search the manual index.
+
+Help and information about Octave is also available on the WWW
+at http://www.octave.org and via the help@octave.org
+mailing list.
+octave:21> print -dpng 
+octave:22> help print
+`print' is a function from the file /usr/share/octave/3.2.4/m/plot/print.m
+
+ -- Function File:  print ()
+ -- Function File:  print (OPTIONS)
+ -- Function File:  print (FILENAME, OPTIONS)
+ -- Function File:  print (H, FILENAME, OPTIONS)
+     Print a graph, or save it to a file
+
+     FILENAME defines the file name of the output file.  If no filename
+     is specified, the output is sent to the printer.
+
+     H specifies the figure handle.  If no handle is specified the
+     handle for the current figure is used.
+
+     OPTIONS:
+    `-PPRINTER'
+          Set the PRINTER name to which the graph is sent if no
+          FILENAME is specified.
+
+    `-GGHOSTSCRIPT_COMMAND'
+          Specify the command for calling Ghostscript.  For Unix and
+          Windows, the defaults are 'gs' and 'gswin32c', respectively.
+
+    `-color'
+    `-mono'
+          Monochrome or color lines.
+
+    `-solid'
+    `-dashed'
+          Solid or dashed lines.
+
+    `-portrait'
+    `-landscape'
+          Specify the orientation of the plot for printed output.
+
+    `-dDEVICE'
+          Output device, where DEVICE is one of:
+         `ps'
+         `ps2'
+         `psc'
+         `psc2'
+               Postscript (level 1 and 2, mono and color)
+
+         `eps'
+         `eps2'
+         `epsc'
+         `epsc2'
+               Encapsulated postscript (level 1 and 2, mono and color)
+
+         `tex'
+         `epslatex'
+         `epslatexstandalone'
+         `pstex'
+         `pslatex'
+               Generate a LaTeX (or TeX) file for labels, and eps/ps for
+               graphics.  The file produced by `epslatexstandalone' can
+               be processed directly by LaTeX.  The other formats are
+               intended to be included in a LaTeX (or TeX) document.
+               The `tex' device is the same as the `epslatex' device.
+
+         `ill'
+         `aifm'
+               Adobe Illustrator
+
+         `cdr'
+         `corel'
+               CorelDraw
+
+         `dxf'
+               AutoCAD
+
+         `emf'
+         `meta'
+               Microsoft Enhanced Metafile
+
+         `fig'
+               XFig.  If this format is selected the additional options
+                  `-textspecial' or `-textnormal' can be used to control
+                  whether the special flag should be set for the text in
+                  the figure (default is `-textnormal').
+
+         `hpgl'
+               HP plotter language
+
+         `mf'
+               Metafont
+
+         `png'
+               Portable network graphics
+
+         `jpg'
+         `jpeg'
+               JPEG image
+
+         `gif'
+               GIF image
+
+         `pbm'
+               PBMplus
+
+         `svg'
+               Scalable vector graphics
+
+         `pdf'
+               Portable document format
+
+               NOTE: The gnuplot binary as shipped by Debian cannot
+               create PDF files, see http://bugs.debian.org/478677
+
+
+          If the device is omitted, it is inferred from the file
+          extension, or if there is no filename it is sent to the
+          printer as postscript.
+
+    `-dGS_DEVICE'
+          Additional devices are supported by Ghostscript.  Some
+          examples are;
+
+         `ljet2p'
+               HP LaserJet IIP
+
+         `ljet3'
+               HP LaserJet III
+
+         `deskjet'
+               HP DeskJet and DeskJet Plus
+
+         `cdj550'
+               HP DeskJet 550C
+
+         `paintjet'
+               HP PointJet
+
+         `pcx24b'
+               24-bit color PCX file format
+
+         `ppm'
+               Portable Pixel Map file format
+
+          For a complete list, type `system ("gs -h")' to see what
+          formats and devices are available.
+
+          When the ghostscript is sent to a printer the size is
+          determined by the figure's "papersize" property.  When the
+          ghostscript output is sent to a file the size is determined
+          by the figure's "paperposition" property.
+
+    `-rNUM'
+          Resolution of bitmaps in pixels per inch.  For both metafiles
+          and SVG the default is the screen resolution, for other it is
+          150 dpi.  To specify screen resolution, use "-r0".
+
+    `-tight'
+          Forces a tight bounding box for eps-files.  Since the
+          ghostscript devices are conversion of an eps-file, this
+          option works the those devices as well.
+
+    `-SXSIZE,YSIZE'
+          Plot size in pixels for EMF, GIF, JPEG, PBM, PNG and SVG.  If
+          using the command form of the print function, you must quote
+          the XSIZE,YSIZE option.  For example, by writing
+          `"-S640,480"'.  The size defaults to that specified by the
+          figure's paperposition property.
+
+    `-FFONTNAME'
+    `-FFONTNAME:SIZE'
+    `-F:SIZE'
+          FONTNAME set the postscript font (for use with postscript,
+          aifm, corel and fig).  By default, 'Helvetica' is set for
+          PS/Aifm, and 'SwitzerlandLight' for Corel.  It can also be
+          'Times-Roman'.  SIZE is given in points.  FONTNAME is ignored
+          for the fig device.
+
+     The filename and options can be given in any order.
+
+
+Additional help for built-in functions and operators is
+available in the on-line version of the manual.  Use the command
+`doc <topic>' to search the manual index.
+
+Help and information about Octave is also available on the WWW
+at http://www.octave.org and via the help@octave.org
+mailing list.
+octave:23> print('3dHandPath.png')
+octave:24> ls
+3dHandPath.png	data  diary  LHDemoApp	libs  log.m  log.txt
+octave:25> 
+
