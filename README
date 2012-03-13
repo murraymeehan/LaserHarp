@@ -13,12 +13,12 @@ Marsyas
 ofxMarsyas
 
 To install the software prerequisites on Ubuntu 11.04 (should work on 10.04 as well):
-	cd ~
 	git clone git://github.com/murraymeehan/LaserHarp.git
 	cd LaserHarp
-	./Setup.Platform.sh
-	mkdir -R ~/of/of_preRelease_v007_linux/apps/MyWorkingDir/
-	mv ~/LaserHarp ~/of/of_preRelease_v007_linux/apps/MyWorkingDir/LaserHarp
+	sudo ./Setup.Platform.sh # installs many, many things. Read this file to make sure you want them all!
+Then to compile Laserharp:
+	make
+	#sudo make install # does nothing, currently
 
 Good Luck! 
 -- Murray Meehan, January 18 2012
