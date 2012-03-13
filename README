@@ -1,17 +1,11 @@
-LaserHarp is a software and hardware design project by Murray Meehan, Ryan Derry, Kirsten Dohmeier, and Dan Kennedy at the University of Victoria, Canada for our January to April 2012 ELEC499 design project.
+=========================
+This app is a demo of Kinect data manipulation. 
 
-Prerequisities for running LaserHarp
-1. Hardware:
-	A Microsoft Kinect RGBD camera, version 1
-	Laser display system (in early development)
-2. Software
-OpenFrameworks (includes ofxOpenCV)
-OpenNI
-OpenCV
-ofxOpenNI
-Marsyas
-ofxMarsyas
+It is intended to help students and tinkerers who want to start 
+using Kinect-derived data in their favourite way, without having 
+to learn about the whole openframeworks/openNI/openCV situation. 
 
+<<<<<<< HEAD
 To install the software prerequisites on Ubuntu 11.04 (should work on 10.04 as well):
 	git clone git://github.com/murraymeehan/LaserHarp.git
 	cd LaserHarp
@@ -19,6 +13,15 @@ To install the software prerequisites on Ubuntu 11.04 (should work on 10.04 as w
 Then to compile Laserharp:
 	make
 	#sudo make install # does nothing, currently
+=======
+You will need to setup openframeworks/openNI and have a Kinect. 
+>>>>>>> 85b2243ab5e2810d60832902e1111ea9556d89f9
 
-Good Luck! 
--- Murray Meehan, January 18 2012
+The script "setup.sh" should take care of everything except getting a Kinect sensor, as long as you're using Ubuntu 11.04 32-bit Linux, as I am. 
+
+It should all run on macosx/windows, but you will need to setup the stuff setup.sh takes care of on your own.
+
+I hope you like it!
+Murray Meehan
+Feb 24 2012
+=========================
