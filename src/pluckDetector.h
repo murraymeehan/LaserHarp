@@ -12,7 +12,6 @@
 #endif
 
 #include "ofxOpenNI.h"
-#include "ofThread.h"
 
 class pluckDetector : public ofThread { 
   public:

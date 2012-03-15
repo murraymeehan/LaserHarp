@@ -3,14 +3,13 @@
 //--------------------------------------------------------------
 void testApp::setup() {
 	detector.setup();
-	//generator.setup();
-	TO.start();
+	//TO.start();
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
 	detector.update();
-	//generator.update();
+//	TO.update();
 	
 	if (detector.pluckDetection()) {
 		//generator.play(detector.pluckParams);
@@ -20,7 +19,6 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 	detector.draw();
-	//generator.draw();
 	TO.draw();
 }
 
@@ -30,7 +28,7 @@ void testApp::keyPressed  (int key){
     } else if (key == 's'){
         TO.stop();
     }
-	detector.keyPressed(key);
-	//generator.play(detector.pluckParams);
+	//detector.keyPressed(key);
+	//TO.play(detector.pluckParams);
 }
 

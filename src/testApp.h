@@ -12,8 +12,7 @@
 #endif
 
 #include "pluckDetector.h"
-#include "pluckGenerator.h"
-#include "threadedObject.h"
+#include "pluckGeneratorThreaded.h"
 
 class testApp : public ofBaseApp{
 
@@ -24,9 +23,8 @@ public:
 	void keyPressed  (int key);
 	
 	pluckDetector detector;
-	pluckGenerator generator;
+	pluckGeneratorThreaded TO;
 	
-	threadedObject	TO;
 };
 
 #endif
