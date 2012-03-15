@@ -16,7 +16,6 @@
 class pluckGenerator : public ofxMarsyasNetwork { 
 
 public:
-	ofMarNetwork(string name = "ofMarNetwork");
 	MarSystem* playbacknet;
 	
 	void setup();	
@@ -29,8 +28,6 @@ public:
 	int t;
 
 };
-
-
 
 #endif
 

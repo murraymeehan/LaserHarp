@@ -13,6 +13,7 @@
 
 #include "pluckDetector.h"
 #include "pluckGenerator.h"
+#include "threadedObject.h"
 
 class testApp : public ofBaseApp{
 
@@ -24,6 +25,8 @@ public:
 	
 	pluckDetector detector;
 	pluckGenerator generator;
+	
+	threadedObject	TO;
 };
 
 #endif
