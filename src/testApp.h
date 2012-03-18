@@ -24,8 +24,9 @@ public:
 	
 	void update(){
 		detector.update();
-		if (detector.pluckDetection())
-			generator.start(); //detector.pluckParams
+		if (detector.pluckDetection()) {
+			//generator.start(); //detector.pluckParams
+		}
 	}
 	
 	void draw(){

@@ -117,25 +117,39 @@ bool pluckDetector::pluckDetection(){
 		
         ofxTrackedHand hand = *recordHandTracker.getHand(0);
         ofVec3f handPos = ofVec3f(hand.projectPos);
-		ofVec3f stringPos = ofVec3f(423.337891 , 211.152908 , 1078.550659);
-		float dist = handPos.distance(stringPos); 
+		ofVec3f string1 = ofVec3f(423.337891 , 211.152908 , 1078.550659);
+		ofVec3f string2 = ofVec3f(373.179688 , 216.720673 , 1275.316162);
 		
-		stringstream msg;
-		msg << handPos << " :: " << dist << " :: ";
-		ofDrawBitmapString(msg.str(), 10, 320);
-        if (dist < 100)  
+		
+		float d1 = handPos.distance(string1); 
+		float d2 = handPos.distance(string2); 
+		
+//		stringstream msg;
+//		msg << handPos << " :: d1 :: " << d1 << " ::d2:: " << d2;
+//		ofDrawBitmapString(msg.str(), 10, 320);
+        if (d1 < 100)  
         {
-        	pluckParams.pos = stringPos[0];
-		    pluckParams.vel = stringPos[1];
-		    pluckParams.acc = stringPos[2];
-		    pluckParams.note = dist;
+        	pluckParams.pos = string1[0];
+		    pluckParams.vel = string1[1];
+		    pluckParams.acc = string1[2];
+		    pluckParams.note = d1;
 
-            printf(" Pluck: [%f , %f , %f , dist= %f ]\n",handPos[0],handPos[1],handPos[2],dist);
+            printf(" Pluck1: [%f,%f,%f , d1= %f ], d2= %f ]\n",handPos[0],handPos[1],handPos[2],d1,d2);
+        	return true;
+        } 
+        else if (d2 < 100)  
+        {
+        	pluckParams.pos = string2[0];
+		    pluckParams.vel = string2[1];
+		    pluckParams.acc = string2[2];
+		    pluckParams.note = d2;
+
+            printf(" Pluck2: [%f,%f,%f , d1= %f ], d2= %f ]\n",handPos[0],handPos[1],handPos[2],d1,d2);
         	return true;
         } 
         else 
         {
-	        printf(" Missed: [%f , %f , %f , dist= %f ]\n",handPos[0],handPos[1],handPos[2],dist);
+	        printf(" Missed: [%f,%f,%f , d1= %f ], d2= %f ]\n",handPos[0],handPos[1],handPos[2],d1,d2);
 		}
     }
 	return false;
