@@ -90,20 +90,12 @@ void pluckDetector::draw(){
 
 	string statusPlay		= (string)(isLive ? "LIVE STREAM" : "PLAY STREAM");
 	string statusRec		= (string)(!isRecording ? "READY" : "RECORDING");
-	string statusHands		= (string)(isTrackingHands ? "TRACKING HANDS: " + (string)(isLive ? ofToString(recordHandTracker.getNumTrackedHands()) : ofToString(playHandTracker.getNumTrackedHands())) + ""  : "NOT TRACKING");
-	string statusFilterLvl	= ofToString(filterFactor);
-	string statusSmoothHand = (string)(isLive ? ofToString(recordHandTracker.getSmoothing()) : ofToString(playHandTracker.getSmoothing()));
-
 	stringstream msg;
 	msg
 	<< "    s : start/stop recording  : " << statusRec << endl
 	<< "    p : playback/live streams : " << statusPlay << endl
-	<< "    h : hand tracking         : " << statusHands << endl
-	<< "[ / ] : filter hands factor   : " << statusFilterLvl << endl
-	<< "; / ' : smooth hands (openni) : " << statusSmoothHand << endl
 	<< "- / + : nearThreshold         : " << ofToString(nearThreshold) << endl
 	<< "< / > : farThreshold          : " << ofToString(farThreshold) << endl
-	<< "y / Y : tilt up / down        : " << endl
 	<< endl
 	<< "File  : " << oniRecorder.getCurrentFileName() << endl
 	<< "FPS   : " << ofToString(ofGetFrameRate()) << "  " 
@@ -121,32 +113,29 @@ bool pluckDetector::pluckDetection(){
     if (recordHandTracker.getNumTrackedHands() > 0) 
     {
         // if at least 1 hand is detected, check hand #1
-        ofxTrackedHand MurrayHand = *recordHandTracker.getHand(0);
-        float x = MurrayHand.projectPos.x;
-        float y = MurrayHand.projectPos.y;
-        float z = MurrayHand.projectPos.z;
+		// Within set radius of a manually recorded point
 		
-		// Within set radius of point
-//		414.664429 , 323.526642 , 1124.888428
-		float xt=414;
-		float yt=323;
-		float zt=1124;
-
-		float radius = 100;
+        ofxTrackedHand hand = *recordHandTracker.getHand(0);
+        ofVec3f handPos = ofVec3f(hand.projectPos);
+		ofVec3f stringPos = ofVec3f(423.337891 , 211.152908 , 1078.550659);
+		float dist = handPos.distance(stringPos); 
 		
-		float dist=sqrtf((x-xt)*(x-xt)+(y-yt)*(y-yt)+(z-zt)*(z-zt)); 
-        if (dist < radius)  
+		stringstream msg;
+		msg << handPos << " :: " << dist << " :: ";
+		ofDrawBitmapString(msg.str(), 10, 320);
+        if (dist < 100)  
         {
-        	pluckParams.pos = x;
-		    pluckParams.vel = y;
-		    pluckParams.acc = z;
+        	pluckParams.pos = stringPos[0];
+		    pluckParams.vel = stringPos[1];
+		    pluckParams.acc = stringPos[2];
 		    pluckParams.note = dist;
-            printf(" Pluck: [%f , %f , %f , dist= %f ]\n",x,y,z,dist);
+
+            printf(" Pluck: [%f , %f , %f , dist= %f ]\n",handPos[0],handPos[1],handPos[2],dist);
         	return true;
         } 
         else 
         {
-	        printf(" Missed: [%f , %f , %f , dist= %f ]\n",x,y,z,dist);
+	        printf(" Missed: [%f , %f , %f , dist= %f ]\n",handPos[0],handPos[1],handPos[2],dist);
 		}
     }
 	return false;
