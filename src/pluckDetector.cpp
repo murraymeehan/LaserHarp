@@ -11,19 +11,20 @@ void pluckDetector::setup() {
 
 	nearThreshold = 200;
 	farThreshold  = 1000;
-
 	filterFactor = 0.1f;
+	pluckParams.r = 0;
+    pluckParams.z = 0;
+    pluckParams.stringNum = 0;
 	
-	pluckParams.pos = 0;
-    pluckParams.vel = 0;
-    pluckParams.acc = 0;
-    pluckParams.note = 0;
+	setupRecording();
 	
-//#ifdef USE_XML_NODE_CONFIG
+	oniRecorder.setup(&recordContext, ONI_STREAMING);
+
+}
+
+void pluckDetector::setupRecording() {
 //	recordContext.setupUsingXMLFile();
-//#else
 	recordContext.setup();	// all nodes created by code -> NOT using the xml config file at all
-//#endif
 
 	recordDepth.setup(&recordContext);
 
@@ -32,10 +33,8 @@ void pluckDetector::setup() {
 	recordHandTracker.setFilterFactors(filterFactor);	// custom smoothing/filtering (can also set per hand with setFilterFactor)...set them all to 0.1f to begin with  
 
 	recordContext.toggleMirror();
-
-//	oniRecorder.setup(&recordContext, ONI_STREAMING);
-
 }
+
 
 void pluckDetector::setupPlayback(string _filename) {
 
@@ -106,51 +105,76 @@ void pluckDetector::draw(){
 }
 
 
+//--------------------------------------------------------------
+bool pluckDetector::isPointInCylinder(ofVec3f P, ofVec3f C1, ofVec3f C2, float CR){
+    
+    printf(" Inputs: P=[%f,%f,%f], C1=[%f,%f,%f], C2=[%f,%f,%f], CR=[%f]\n",P[0],P[1],P[2],C1[0],C1[1],C1[2],C2[0],C2[1],C2[2],CR);
+    
+    ofVec3f CN = ofVec3f(C2 - C1).getNormalized(); //ofVec3f CN1 = ofVec3f {C2 - C1}.getNormalized(); //?
+//    CN = CN.getNormalized();
+    
+    float fDistanceToPlane1 = CN.dot(P-C1);
+	float fDistanceToPlane2 = CN.dot(C2-P);
+	
+	printf(" fDistanceToPlane1: [%f]\n",fDistanceToPlane1);
+	printf(" fDistanceToPlane2: [%f]\n",fDistanceToPlane2);
+	
+	if ( (fDistanceToPlane1 < 0 ) || (fDistanceToPlane2 < 0)) {
+		printf("MISS");
+		return false;
+	} else {
+		ofVec3f TempP =  P - (CN * fDistanceToPlane1) - C1;
+		float fDistanceFromCenter = TempP.squareLength();
+		printf(" fDistanceFromCenter: [%f]\n",fDistanceFromCenter);
+		if (fDistanceFromCenter > CR) {
+			printf("MISS");
+			return false;
+		} else {
+			pluckParams.r = fDistanceFromCenter;
+		    pluckParams.z = fDistanceToPlane1;
+		    pluckParams.stringNum = 0;
+		    printf("HIT!!!");
+			return true;
+		}
+	}
+}
 
 //--------------------------------------------------------------
 bool pluckDetector::pluckDetection(){
 
-    if (recordHandTracker.getNumTrackedHands() > 0) 
+    if (recordHandTracker.getNumTrackedHands() > 0) // if at least 1 hand is detected, report hand #1
     {
-        // if at least 1 hand is detected, check hand #1
-		// Within set radius of a manually recorded point
-		
         ofxTrackedHand hand = *recordHandTracker.getHand(0);
         ofVec3f handPos = ofVec3f(hand.projectPos);
-		ofVec3f string1 = ofVec3f(423.337891 , 211.152908 , 1078.550659);
-		ofVec3f string2 = ofVec3f(373.179688 , 216.720673 , 1275.316162);
+        
+        // parameters of the musical string
+		ofVec3f C1(171.225281,296.035126,1117.386719 ); // 2 sides of my polyview monitor, marked w/ pencil
+		ofVec3f C2(189.734222,269.359375,1447.929199);
+		float r = C1.distance(C2) / 2; // I'm not sure what a reasonable default would be.
 		
+		// Method 1: is handPos inside a cylinder?
+		if (isPointInCylinder(handPos, C1, C2, r)) {
+			//printf(" Intersection: [%f,%f,%f , d1= %f ], d2= %f ]\n",handPos[0],handPos[1],handPos[2],d1,d2);
+			return true;
+		} else {
+			//printf(" Miss: [%f,%f,%f , d1= %f ], d2= %f ]\n",handPos[0],handPos[1],handPos[2],d1,d2);
+			return false;
+		}
 		
-		float d1 = handPos.distance(string1); 
-		float d2 = handPos.distance(string2); 
-		
-//		stringstream msg;
-//		msg << handPos << " :: d1 :: " << d1 << " ::d2:: " << d2;
-//		ofDrawBitmapString(msg.str(), 10, 320);
-        if (d1 < 100)  
-        {
-        	pluckParams.pos = string1[0];
-		    pluckParams.vel = string1[1];
-		    pluckParams.acc = string1[2];
-		    pluckParams.note = d1;
-
+		/*
+		// Method 2: Is hand within 'r' of either of the end points?
+		float d1 = handPos.distance(C1); 
+		float d2 = handPos.distance(C2);
+		if (d1 < r) {
             printf(" Pluck1: [%f,%f,%f , d1= %f ], d2= %f ]\n",handPos[0],handPos[1],handPos[2],d1,d2);
         	return true;
-        } 
-        else if (d2 < 100)  
-        {
-        	pluckParams.pos = string2[0];
-		    pluckParams.vel = string2[1];
-		    pluckParams.acc = string2[2];
-		    pluckParams.note = d2;
-
+        } else if (d2 < r) {
             printf(" Pluck2: [%f,%f,%f , d1= %f ], d2= %f ]\n",handPos[0],handPos[1],handPos[2],d1,d2);
         	return true;
-        } 
-        else 
-        {
+        } else {
 	        printf(" Missed: [%f,%f,%f , d1= %f ], d2= %f ]\n",handPos[0],handPos[1],handPos[2],d1,d2);
 		}
+		*/
     }
 	return false;
 }
@@ -252,7 +276,8 @@ void pluckDetector::keyPressed(int key){
 			break;
         case 'Q':
         case 'q':
-		        break;
+        	OF_EXIT_APP(0);
+	        break;
 		default:
 			break;
 	}

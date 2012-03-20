@@ -4,10 +4,9 @@
 #ifndef _PLUCK_PARAMS
 	#define _PLUCK_PARAMS
 	typedef struct {
-		float pos;
-		float vel;
-		float acc;
-		float note;    
+		float r;
+		float z;
+		float stringNum; 
 	}   pluckParameters;
 #endif
 
@@ -18,33 +17,14 @@
 class testApp : public ofBaseApp{
 
 public:
-	void setup(){
-		detector.setup();
-	}
-	
-	void update(){
-		detector.update();
-		if (detector.pluckDetection()) {
-			//generator.start(); //detector.pluckParams
-		}
-	}
-	
-	void draw(){
-		detector.draw();
-	}
-	
-	void keyPressed  (int key){
-		if (key == 'a'){
-		    generator.start();
-		} else if (key == 's'){
-		    generator.stop();
-		}
-	}
+	void setup();
+	void update();
+	void draw();
+	void keyPressed  (int key);
 	
 	pluckDetector detector;
 	pluckGeneratorThreaded generator;
 	
-	// TODO: impliment a vector of some max size of pluckGenerators for multiple notes at a time.
 	vector<pluckGeneratorThreaded> generatorVector;
 };
 

@@ -22,48 +22,11 @@ class pluckGeneratorThreaded : public ofThread {
 		bool isInitialized;
 	    int durationSamples;  
 
-		pluckGeneratorThreaded(){
-			durationSamples = 300;
-			isInitialized = false;
-		}
+		pluckGeneratorThreaded();
 
-		void start(){
-			startThread(false, true);   // blocking, verbose
-        }
-
-        void stop(){
-            stopThread();
-        }
-
-		void threadedFunction(){
-
-			while( isThreadRunning() != 0 )
-			{
-				if (!isInitialized) 
-				{
-					playbacknet = ofxMarsyasNetwork::mng.create("Series", "playbacknet");
-					playbacknet->addMarSystem(ofxMarsyasNetwork::mng.create("MyPlucked", "src"));
-					playbacknet->addMarSystem(ofxMarsyasNetwork::mng.create("Gain", "gt"));
-					playbacknet->addMarSystem(ofxMarsyasNetwork::mng.create("AudioSink", "dest"));
-					playbacknet->updControl("AudioSink/dest/mrs_bool/initAudio", true);
-					isInitialized=true;
-				} 
-				else 
-				{
-					if (durationSamples > 0)
-					{
-						playbacknet->tick();
-						durationSamples--;
-					} 
-					else 
-					{
-						break;
-					}
-				}
-			}
-		}
-
-		void draw() {}
+		void start();
+        void stop();
+		void threadedFunction();
 
 };
 
