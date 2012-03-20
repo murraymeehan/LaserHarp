@@ -22,3 +22,35 @@ Then to compile Laserharp:
 
 Good Luck! 
 -- Murray Meehan, January 18 2012
+
+Journal: 2012 March 19
+TIL: At least in the x direction, kinect spatial units are roughly 1mm wide.
+to draw the strings on the screen, see http://www.openframeworks.cc/documentation/ofxVectorGraphics/ofxVectorGraphics.html
+
+/*
+Points on my polyview monitor
+	Le Diagram
+----------------- 
+|0      1      2|	
+|               |		Monitor is 40cm wide, 35cm tall.
+|3      4      5|		Kinect is 110cm to right of monitor, pointing towards it.
+|               |		Everything shown is about 10cm in front of monitor.
+|6      7      8|		Hand blob printed to screen is about 5cm wide
+-----------------
+Octave/Matlab:
+#	x,y,z
+1	180.852341,214.302048,1468.243286
+	150.295135,204.456268,1465.558105
+2	165.850174,207.792801,1280.754883
+3	164.678391,202.472794,1088.093872
+	164.973907,195.862259,1086.240479
+4	189.734222,269.359375,1447.929199
+5	165.683777,277.729248,1287.288208
+6	171.225281,296.035126,1117.386719
+7	198.520508,331.658142,1467.137939
+	(kinect was tracking wrist instead of palm)
+8	207.749512,342.652100,1281.703491
+	(kinect was tracking wrist instead of palm)
+9	164.703644,368.955109,1086.351807
+*/
+

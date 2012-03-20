@@ -11,8 +11,7 @@
 #endif
 
 #include "pluckDetector.h"
-#include "pluckGeneratorThreaded.h"
-#include <vector>
+#include "pluckGenerator.h"
 
 class testApp : public ofBaseApp{
 
@@ -23,9 +22,8 @@ public:
 	void keyPressed  (int key);
 	
 	pluckDetector detector;
-	pluckGeneratorThreaded generator;
+	pluckGenerator generator;
 	
-	vector<pluckGeneratorThreaded> generatorVector;
 };
 
 #endif

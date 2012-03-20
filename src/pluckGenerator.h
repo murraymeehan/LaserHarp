@@ -4,11 +4,20 @@
 #include "ofMain.h"
 #include "ofxMarsyasNetwork.h"
 
+#ifndef _PLUCK_PARAMS
+	#define _PLUCK_PARAMS
+    typedef struct {
+		float r;
+		float z;
+		float stringNum; 
+	}   pluckParameters;
+#endif
+
 // please be careful - threading problems are notoriously hard
 // to debug and working with threads can be quite difficult
 
 
-class pluckGeneratorThreaded : public ofThread {
+class pluckGenerator : public ofThread {
     // threaded fucntions that share data need to use lock (mutex)
     // and unlock in order to write to that data
     // otherwise it's possible to get crashes.
@@ -22,11 +31,12 @@ class pluckGeneratorThreaded : public ofThread {
 		bool isInitialized;
 	    int durationSamples;  
 
-		pluckGeneratorThreaded();
+		pluckGenerator();
 
 		void start();
         void stop();
 		void threadedFunction();
+		pluckParameters params;
 
 };
 
