@@ -27,6 +27,7 @@ class soundGenerator : public ofThread {
 		
 		float* stringFrequencies; 
 	    float maxVelocity;
+	    
 };
 
 #endif

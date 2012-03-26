@@ -64,6 +64,7 @@ void soundGenerator::setup() {
 	fanout->updControl("Plucked/src6/mrs_natural/stringnum",12);
 	fanout->updControl("Plucked/src6/mrs_real/nton",0);
 	
+	
 	//playbacknet->addMarSystem(ofxMarsyasNetwork::mng.create("Sum", "sum"));
 	//playbacknet->addMarSystem(ofxMarsyasNetwork::mng.create("MixToMono", "sum"));
 	playbacknet->addMarSystem(ofxMarsyasNetwork::mng.create("AudioSink", "dest"));
