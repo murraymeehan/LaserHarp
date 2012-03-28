@@ -3,103 +3,131 @@
 
 void soundGenerator::setup() {
 	
-	stringFrequencies = new float[12];
-	stringFrequencies[0] = 82.4;
-	stringFrequencies[1] = 87.3;
-	stringFrequencies[2] = 110;
-	stringFrequencies[3] = 116.541;
-	stringFrequencies[4] = 146.8;
-	stringFrequencies[5] = 155.529;
-	stringFrequencies[6] = 196;
-	stringFrequencies[7] = 207.655;
-	stringFrequencies[8] = 246.9;
-	stringFrequencies[9] = 261.581;
-	stringFrequencies[10] = 329.6;
-	stringFrequencies[11] = 349.199;
+	freqArray = new float[12];
+	freqArray[0] = 82.4;
+	freqArray[1] = 87.3;
+	freqArray[2] = 110;
+	freqArray[3] = 116.541;
+	freqArray[4] = 146.8;
+	freqArray[5] = 155.529;
+	freqArray[6] = 196;
+	freqArray[7] = 207.655;
+	freqArray[8] = 246.9;
+	freqArray[9] = 261.581;
+	freqArray[10] = 329.6;
+	freqArray[11] = 349.199;
+	
+	// default values to play on an uninitialized note
+	freq = 220.0;
+	pluckpos = 0.5;
+	loss = 1.0;
+	stringnum = 0;
 	
 	// polyphonic!
 	playbacknet = ofxMarsyasNetwork::mng.create("Series", "playbacknet");
 	fanout = ofxMarsyasNetwork::mng.create("Fanout", "fanout");
 	playbacknet->addMarSystem(fanout);
 	fanout->addMarSystem(ofxMarsyasNetwork::mng.create("Plucked", "src0"));
-	fanout->updControl("Plucked/src0/mrs_real/frequency",1*110.0);
-	fanout->updControl("Plucked/src0/mrs_real/pluckpos",0.5);
-	fanout->updControl("Plucked/src0/mrs_real/loss",0.99);
-	fanout->updControl("Plucked/src0/mrs_natural/stringnum",0);
+//	fanout->updControl("Plucked/src0/mrs_real/frequency",freqArray[0]);
+//	fanout->updControl("Plucked/src0/mrs_real/pluckpos",0.5);
+//	fanout->updControl("Plucked/src0/mrs_real/loss",0.99);
+//	fanout->updControl("Plucked/src0/mrs_natural/stringnum",0);
 	fanout->updControl("Plucked/src0/mrs_real/nton",0);
 	fanout->addMarSystem(ofxMarsyasNetwork::mng.create("Plucked", "src1"));
-	fanout->updControl("Plucked/src1/mrs_real/frequency",2*110.0);
-	fanout->updControl("Plucked/src1/mrs_real/pluckpos",0.5);
-	fanout->updControl("Plucked/src1/mrs_real/loss",0.99);
-	fanout->updControl("Plucked/src1/mrs_natural/stringnum",2);
+//	fanout->updControl("Plucked/src1/mrs_real/frequency",freqArray[1]);
+//	fanout->updControl("Plucked/src1/mrs_real/pluckpos",0.5);
+//	fanout->updControl("Plucked/src1/mrs_real/loss",0.99);
+//	fanout->updControl("Plucked/src1/mrs_natural/stringnum",1);
 	fanout->updControl("Plucked/src1/mrs_real/nton",0);
 	fanout->addMarSystem(ofxMarsyasNetwork::mng.create("Plucked", "src2"));
-	fanout->updControl("Plucked/src2/mrs_real/frequency",3*110.0);
-	fanout->updControl("Plucked/src2/mrs_real/pluckpos",0.5);
-	fanout->updControl("Plucked/src2/mrs_real/loss",0.99);
-	fanout->updControl("Plucked/src2/mrs_natural/stringnum",4);
+//	fanout->updControl("Plucked/src2/mrs_real/frequency",freqArray[2]);
+//	fanout->updControl("Plucked/src2/mrs_real/pluckpos",0.5);
+//	fanout->updControl("Plucked/src2/mrs_real/loss",0.99);
+//	fanout->updControl("Plucked/src2/mrs_natural/stringnum",2);
 	fanout->updControl("Plucked/src2/mrs_real/nton",0);
 	fanout->addMarSystem(ofxMarsyasNetwork::mng.create("Plucked", "src3"));
-	fanout->updControl("Plucked/src3/mrs_real/frequency",4*110.0);
-	fanout->updControl("Plucked/src3/mrs_real/pluckpos",0.5);
-	fanout->updControl("Plucked/src3/mrs_real/loss",0.99);
-	fanout->updControl("Plucked/src3/mrs_natural/stringnum",6);
+//	fanout->updControl("Plucked/src3/mrs_real/frequency",freqArray[3]);
+//	fanout->updControl("Plucked/src3/mrs_real/pluckpos",0.5);
+//	fanout->updControl("Plucked/src3/mrs_real/loss",0.99);
+//	fanout->updControl("Plucked/src3/mrs_natural/stringnum",3);
 	fanout->updControl("Plucked/src3/mrs_real/nton",0);
 	fanout->addMarSystem(ofxMarsyasNetwork::mng.create("Plucked", "src4"));
-	fanout->updControl("Plucked/src4/mrs_real/frequency",5*110.0);
-	fanout->updControl("Plucked/src4/mrs_real/pluckpos",0.5);
-	fanout->updControl("Plucked/src4/mrs_real/loss",0.99);
-	fanout->updControl("Plucked/src4/mrs_natural/stringnum",8);
+//	fanout->updControl("Plucked/src4/mrs_real/frequency",freqArray[4]);
+//	fanout->updControl("Plucked/src4/mrs_real/pluckpos",0.5);
+//	fanout->updControl("Plucked/src4/mrs_real/loss",0.99);
+//	fanout->updControl("Plucked/src4/mrs_natural/stringnum",4);
 	fanout->updControl("Plucked/src4/mrs_real/nton",0);
 	fanout->addMarSystem(ofxMarsyasNetwork::mng.create("Plucked", "src5"));
-	fanout->updControl("Plucked/src5/mrs_real/frequency",4*110.0);
-	fanout->updControl("Plucked/src5/mrs_real/pluckpos",0.5);
-	fanout->updControl("Plucked/src5/mrs_real/loss",0.99);
-	fanout->updControl("Plucked/src5/mrs_natural/stringnum",10);
+//	fanout->updControl("Plucked/src5/mrs_real/frequency",freqArray[5]);
+//	fanout->updControl("Plucked/src5/mrs_real/pluckpos",0.5);
+//	fanout->updControl("Plucked/src5/mrs_real/loss",0.99);
+//	fanout->updControl("Plucked/src5/mrs_natural/stringnum",5);
 	fanout->updControl("Plucked/src5/mrs_real/nton",0);
 	fanout->addMarSystem(ofxMarsyasNetwork::mng.create("Plucked", "src6"));
-	fanout->updControl("Plucked/src6/mrs_real/frequency",3*110.0);
-	fanout->updControl("Plucked/src6/mrs_real/pluckpos",0.5);
-	fanout->updControl("Plucked/src6/mrs_real/loss",0.99);
-	fanout->updControl("Plucked/src6/mrs_natural/stringnum",12);
+//	fanout->updControl("Plucked/src6/mrs_real/frequency",freqArray[6]);
+//	fanout->updControl("Plucked/src6/mrs_real/pluckpos",0.5);
+//	fanout->updControl("Plucked/src6/mrs_real/loss",0.99);
+//	fanout->updControl("Plucked/src6/mrs_natural/stringnum",6);
 	fanout->updControl("Plucked/src6/mrs_real/nton",0);
-	
+	fanout->addMarSystem(ofxMarsyasNetwork::mng.create("Plucked", "src7"));
+//	fanout->updControl("Plucked/src7/mrs_real/frequency",freqArray[7]);
+//	fanout->updControl("Plucked/src7/mrs_real/pluckpos",0.5);
+//	fanout->updControl("Plucked/src7/mrs_real/loss",0.99);
+//	fanout->updControl("Plucked/src7/mrs_natural/stringnum",7);
+	fanout->updControl("Plucked/src7/mrs_real/nton",0);
+	fanout->addMarSystem(ofxMarsyasNetwork::mng.create("Plucked", "src8"));
+//	fanout->updControl("Plucked/src8/mrs_real/frequency",freqArray[8]);
+//	fanout->updControl("Plucked/src8/mrs_real/pluckpos",0.5);
+//	fanout->updControl("Plucked/src8/mrs_real/loss",0.99);
+//	fanout->updControl("Plucked/src8/mrs_natural/stringnum",8);
+	fanout->updControl("Plucked/src8/mrs_real/nton",0);
+	fanout->addMarSystem(ofxMarsyasNetwork::mng.create("Plucked", "src9"));
+//	fanout->updControl("Plucked/src9/mrs_real/frequency",freqArray[9]);
+//	fanout->updControl("Plucked/src9/mrs_real/pluckpos",0.5);
+//	fanout->updControl("Plucked/src9/mrs_real/loss",0.99);
+//	fanout->updControl("Plucked/src9/mrs_natural/stringnum",9);
+	fanout->updControl("Plucked/src9/mrs_real/nton",0);
+	fanout->addMarSystem(ofxMarsyasNetwork::mng.create("Plucked", "src10"));
+//	fanout->updControl("Plucked/src10/mrs_real/frequency",freqArray[10]);
+//	fanout->updControl("Plucked/src10/mrs_real/pluckpos",0.5);
+//	fanout->updControl("Plucked/src10/mrs_real/loss",0.99);
+//	fanout->updControl("Plucked/src10/mrs_natural/stringnum",10);
+	fanout->updControl("Plucked/src10/mrs_real/nton",0);
+	fanout->addMarSystem(ofxMarsyasNetwork::mng.create("Plucked", "src11"));
+//	fanout->updControl("Plucked/src11/mrs_real/frequency",freqArray[11]);
+//	fanout->updControl("Plucked/src11/mrs_real/pluckpos",0.5);
+//	fanout->updControl("Plucked/src11/mrs_real/loss",0.99);
+//	fanout->updControl("Plucked/src11/mrs_natural/stringnum",11);
+	fanout->updControl("Plucked/src11/mrs_real/nton",0);
+	fanout->addMarSystem(ofxMarsyasNetwork::mng.create("Plucked", "src12"));
+//	fanout->updControl("Plucked/src12/mrs_real/frequency",freqArray[12]);
+//	fanout->updControl("Plucked/src12/mrs_real/pluckpos",0.5);
+//	fanout->updControl("Plucked/src12/mrs_real/loss",0.99);
+//	fanout->updControl("Plucked/src12/mrs_natural/stringnum",12);
+	fanout->updControl("Plucked/src12/mrs_real/nton",0);
 	
 	//playbacknet->addMarSystem(ofxMarsyasNetwork::mng.create("Sum", "sum"));
-	//playbacknet->addMarSystem(ofxMarsyasNetwork::mng.create("MixToMono", "sum"));
+	playbacknet->addMarSystem(ofxMarsyasNetwork::mng.create("MixToMono", "sum"));
+	
+	// I set the initial gain to zero to supress the sound of newly created
+	//   strings, which play as soon as they are created.
+	// the mystery: why does a gain of 0 not supress all output?
+	// 		in fact, gains of +20.0 and -20.0 sound about the same. 
+	playbacknet->addMarSystem(ofxMarsyasNetwork::mng.create("Gain", "gt"));
+	playbacknet->updControl("AudioSink/gt/mrs_real/gain", 0.0);
+	
 	playbacknet->addMarSystem(ofxMarsyasNetwork::mng.create("AudioSink", "dest"));
 	playbacknet->updControl("AudioSink/dest/mrs_bool/initAudio", true);
-	
 }
 
-
-void soundGenerator::update() {
+void soundGenerator::update() 
+{
 	playbacknet->tick();
 }
 
-void soundGenerator::playSample(int note, float velocity, float position) {
-
-	switch (note) {
-		case '0':
-				play(110.0, 0.5, 0.99, 0); // frequency, pluckpos, loss, stringnum
-				break;
-		case '1':
-				play(220.0, 0.5, 0.99, 1); // frequency, pluckpos, loss, stringnum
-				break;
-		case '2':
-				play(330.0, 0.5, 0.99, 2); // frequency, pluckpos, loss, stringnum
-				break;
-		case '3':
-				play(440.0, 0.5, 0.99, 3); // frequency, pluckpos, loss, stringnum
-				break;
-		case 'Q':
-		case 'q':
-			OF_EXIT_APP(0);
-			break;
-		default:
-			break;
-    }
-
+void soundGenerator::playSample(pluckParameters params) 
+{
+	play(55.0*(1+params.stringNum), 0.5, 0.99, params.stringNum);
 }
 
 void
@@ -128,8 +156,27 @@ soundGenerator::play(float frequency, float pluckpos, float loss, int stringnum)
 			name = "src5";
 			break;
 		case 6:
-		default:
 			name = "src6";
+			break;
+		case 7:
+			name = "src7";
+			break;
+		case 8:
+			name = "src8";
+			break;
+		case 9:
+			name = "src9";
+			break;
+		case 10:
+			name = "src10";
+			break;
+		case 11:
+			name = "src11";
+			break;
+		case 12:
+			name = "src12";
+			break;
+		default:
 			break;
 	}
 	
@@ -137,7 +184,7 @@ soundGenerator::play(float frequency, float pluckpos, float loss, int stringnum)
 	fanout->updControl("Plucked/" + name + "/mrs_real/frequency",(double)frequency);
 	fanout->updControl("Plucked/" + name + "/mrs_real/pluckpos",(double)pluckpos);
 	fanout->updControl("Plucked/" + name + "/mrs_real/loss",(double)loss);
-	fanout->updControl("Plucked/" + name + "/mrs_natural/stringnum",stringnum);
+	fanout->updControl("Plucked/" + name + "/mrs_natural/stringnum",(int)stringnum);
 	fanout->updControl("Plucked/" + name + "/mrs_real/nton",(double)1.0);
 	
 }
