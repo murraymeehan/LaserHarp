@@ -1,2 +1,2 @@
-ofxOpenNI
 ofxMarsyas
+ofxOsc

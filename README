@@ -1,56 +1,28 @@
-LaserHarp is a software and hardware design project by Murray Meehan, Ryan Derry, Kirsten Dohmeier, and Dan Kennedy at the University of Victoria, Canada for our January to April 2012 ELEC499 design project.
+LaserHarp is a software and hardware design project by Murray Meehan, 
+Ryan Derry, Kirsten Dohmeier, and Dan Kennedy at the University of 
+Victoria for our January to April 2012 ELEC499 design project.
 
-Prerequisities for running LaserHarp
-1. Hardware:
-	A Microsoft Kinect RGBD camera, version 1
-	Laser display system (in early development)
-2. Software
-OpenFrameworks (includes ofxOpenCV)
-OpenNI
-OpenCV
-ofxOpenNI
-Marsyas
-ofxMarsyas
+The code in this repository is written by Murray Meehan and works
+hand in hand with the Marsyas plugin written by Ryan Derry. Ryan's
+Marsyas plugin should be integrated into the Marsyas repository
+in the near future, and in the meantime a simpler version is available
+today using the OpenFrameworks ofSound library. It will also be 
+uploaded to this repository as soon as a clean copy of the source code to
+it can be found.
 
-To install the software prerequisites on Ubuntu 11.04 (should work on 10.04 as well):
-	git clone git://github.com/murraymeehan/LaserHarp.git
-	cd LaserHarp
-	sudo ./Setup.Platform.sh # installs many, many things. Read this file to make sure you want them all!
-Then to compile Laserharp:
-	make
-	#sudo make install # does nothing, currently
+To run your very own laser harp, you will need:
+1. A Kinect sensor
+2. A computer running Linux, MacOSX, or Windows
+3. Installed software (all free / open source):
+	OpenNI Natural Interaction Toolkit
+	NITE gesture tracking extension to OpenNI
+	OpenFrameworks Creative Coding toolkit
+	OpenFrameworks plugin: ofxOpenNI
+	OpenFrameworks plugin: ofxMarsyas (https://github.com/murraymeehan/ofxMarsyas)
 
-Good Luck! 
--- Murray Meehan, January 18 2012
+To install all software prerequisites on Ubuntu 11.04 (or possibly 10.04), try the install
+script "Setup.Platform.sh". Your milage may vary, please report any problems because I 
+would be happy to fix them.
 
-Journal: 2012 March 19
-TIL: At least in the x direction, kinect spatial units are roughly 1mm wide.
-to draw the strings on the screen, see http://www.openframeworks.cc/documentation/ofxVectorGraphics/ofxVectorGraphics.html
-
-/*
-Points on my polyview monitor
-	Le Diagram
------------------ 
-|0      1      2|	
-|               |		Monitor is 40cm wide, 35cm tall.
-|3      4      5|		Kinect is 110cm to right of monitor, pointing towards it.
-|               |		Everything shown is about 10cm in front of monitor.
-|6      7      8|		Hand blob printed to screen is about 5cm wide
------------------
-Octave/Matlab:
-#	x,y,z
-1	180.852341,214.302048,1468.243286
-	150.295135,204.456268,1465.558105
-2	165.850174,207.792801,1280.754883
-3	164.678391,202.472794,1088.093872
-	164.973907,195.862259,1086.240479
-4	189.734222,269.359375,1447.929199
-5	165.683777,277.729248,1287.288208
-6	171.225281,296.035126,1117.386719
-7	198.520508,331.658142,1467.137939
-	(kinect was tracking wrist instead of palm)
-8	207.749512,342.652100,1281.703491
-	(kinect was tracking wrist instead of palm)
-9	164.703644,368.955109,1086.351807
-*/
-
+Enjoy! 
+-- Murray Meehan, April 3, 2012
