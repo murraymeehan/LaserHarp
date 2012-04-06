@@ -1,0 +1,4 @@
+ofxOpenNI
+ofxArgs
+ofxOsc
+ofxOpenCv
