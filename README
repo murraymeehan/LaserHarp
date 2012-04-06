@@ -2,6 +2,12 @@ LaserHarp is a software and hardware design project by Murray Meehan,
 Ryan Derry, Kirsten Dohmeier, and Dan Kennedy at the University of 
 Victoria for our January to April 2012 ELEC499 design project.
 
+The LaserHarp is divided into 4 seperate applications built using OpenFrameworks, which help each other but are not strictly inter-dependant:
+LaserHarp_AudioGenerator: A Marsyas-based application which works like a MiDi keyboard, and also does more complicated audio synthesis with Marsyas when sent commands by LaserHarp_MotionTracker.
+LaserHarp_MotionTracker: An OpenNI-based Kinect motion tracking application which is really messy right now, and acts as a controller for AudioGenerator. Inter-process communication is handled by the Open Sound Control messaging system, which makes running different processes on different computers really, really simple.
+LaserHarp_arduino: This is a currently stand-alone Arduino Serial Interface program to select the operating mode of the LaserBoard, a physical user interface designed and built by us during the January-April 2012 term at UVic. If you happen to see the LaserBoard, I recommend using a fog machine with it. LaserHarp_arduino is not required to sue the other software.
+ofxOpenNIHandPositionLogger: This is a quick and dirty OpenNI application for recording hand tracking data from a Kinect sensor. It came in handy when we were learning what the Kinect could do and when debugging LaserHarp_AudioGenerator. It is a slightly modified version of the ofxOpenNI-demoallfeatures sample application which is included in the ofxOpenNI addon for OpenFrameworks.
+
 The code in this repository is written by Murray Meehan and works
 hand in hand with the Marsyas plugin written by Ryan Derry. Ryan's
 Marsyas plugin should be integrated into the Marsyas repository
@@ -24,5 +30,8 @@ To install all software prerequisites on Ubuntu 11.04 (or possibly 10.04), try t
 script "Setup.Platform.sh". Your milage may vary, please report any problems because I 
 would be happy to fix them.
 
-Enjoy! 
--- Murray Meehan, April 3, 2012
+For installation procedures on MacOSX or Windows, and even IOS and Android devices for some functionality, please consult the respective openFrameworks developers manuals or wait a few weeks for my term to blow over so I can finish tidying this project up. Or ask me for help, that will speed me up :)
+
+
+p.s. Thank you to everyone who provided helpful advice to me this semester, I will try to mention  most of you in my project report, but if I forget to, know that I appreciated your patience.
+-- Murray Meehan, April 6, 2012
