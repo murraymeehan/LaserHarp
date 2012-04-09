@@ -18,6 +18,8 @@ class testApp : public ofBaseApp{
 		void update();
 		void draw();
 		void keyPressed  (int key);
+
+		void playEvent();
 		
 		motionDetector detector;
 		

@@ -86,23 +86,31 @@ void testApp::draw() {
 void testApp::keyPressed  (int key){ 
 	//generate a chromatic scale
 	if (key == 'c'){
+		reconfigureScale('c');
+	}
+	//generate a  major pentatonic scale
+	if (key == 'p'){
+		reconfigureScale('p');
+	}
+
+}
+
+void testApp::reconfigureScale(int scale) {
+	switch (scale) {
+	case 'c': // chromatic scale
 		byte1 = 0xFF;
 		byte2 = 0xFF;
 		byte3 = 0xFF;
 		bSendSerialMessage = true;
-	}
-	//generate a major scale
-		// todo
-	//generate a minor scale
-		// todo
-	//generate a  major pentatonic scale
-	if (key == 'p'){
+		break;
+	default:
+	case 'p' // major pentatonic scale
 		byte1 = 0x29;
 		byte2 = 0x52;
 		byte3 = 0x95;
 		bSendSerialMessage = true;
+		break;
 	}
-
 }
 
 void testApp::checkMessage() {
@@ -121,26 +129,16 @@ void testApp::checkMessage() {
 		// check for reconfigure event message
 		if ( m.getAddress() == "/laserboard/reactivate" )
 		{
-			// reconfigure laser board
-			byte1 = 0x29;
-			byte2 = 0x52;
-			byte3 = 0x95;
-			bSendSerialMessage = true;
-			
-			cout << "Reconfiguring laser board: activating strings # " 
-				<< byte1 << " : " << byte2 << " : " << byte3 << endl;
+			reconfigureScale();
 		}
 		// check for reconfigure event message
 		if ( m.getAddress() == "/laserboard/port" )
 		{
 			// reconfigure laser board
-			byte1 = 0x29;
-			byte2 = 0x52;
-			byte3 = 0x95;
+			byte1 = m.getArgAsInt32( 0 );
+			byte2 = m.getArgAsInt32( 1 );
+			byte3 = m.getArgAsInt32( 2 );
 			bSendSerialMessage = true;
-			
-			cout << "Reconfiguring laser board: activating strings # " 
-				<< byte1 << " : " << byte2 << " : " << byte3 << endl;
 		}
 		// unrecognized message: display on the bottom of the screen
 		string msg_string;
